@@ -1,0 +1,30 @@
+JUEGO
+-Verlust
+-For My Kindom
+-
+
+REINO
+-Verlust
+-
+
+PRINCIPE
+-Artur
+-
+
+PRINCESA
+-Mayla
+-
+
+REY
+-Castor
+-
+
+PRINCIPAL??
+-'n¿Nombre de Jugador'
+-'Nombre de principe/princesa'->segun personaje elejido
+
+MERCADER??
+-
+
+MOBS??
+-
