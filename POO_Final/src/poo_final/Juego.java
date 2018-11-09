@@ -6,9 +6,14 @@
 package poo_final;
 
 import Controles.Teclado;
+import Graficos.Pantalla;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
 /**
@@ -23,9 +28,20 @@ public class Juego extends Canvas implements Runnable{
     private static final int ALTO = 600; //alto de ventana
     private static final String NOMBRE = "Juego"; //nombre de ventana/juego
     
+    /*Variables controladoras de frames y actualzaciones*/
     private static int aps = 0; //actualizaiones por segundo
     private static int fps = 0; //frames por segundo
+    /*--------------------------------------------------*/
     
+    private static int X = 0;
+    private static int Y = 0;
+    private static Pantalla p;
+    
+    /*Variables de manipulacion de pixeles del juego*/
+    private static BufferedImage imagen = new BufferedImage(ANCHO,ALTO,BufferedImage.TYPE_INT_RGB); //crea una imagen en el buffer
+    private static int[] pixeles = ((DataBufferInt) imagen.getRaster().getDataBuffer()).getData(); //obtiene los pixeles como int y los almacena en un arreglo
+    /*----------------------------------------------*/
+            
     private static JFrame ventana;
     private static Thread thread; //hilo principal
     private static Teclado teclado;
@@ -40,6 +56,8 @@ public class Juego extends Canvas implements Runnable{
         setPreferredSize(new Dimension(ANCHO,ALTO));
         teclado = new Teclado();
         addKeyListener(teclado);
+        
+        p = new Pantalla(ANCHO,ALTO);
         
         ventana = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -91,6 +109,23 @@ public class Juego extends Canvas implements Runnable{
     
     /*Muestra el contenido en la ventana*/
     public void Mostrar() {
+        BufferStrategy estrategia = getBufferStrategy();
+        if(estrategia==null) {
+            createBufferStrategy(3);
+            return;
+        }
+        
+        p.Limpiar();
+        p.Mostrar(X,Y);
+        
+        System.arraycopy(p.pixeles,0,this.pixeles,0,this.pixeles.length);
+        
+        Graphics g = estrategia.getDrawGraphics(); //obtiene los graficos a dibujar
+        g.drawImage(imagen, 0, 0, getWidth(),getHeight(),null); //dibuja los graficos
+        g.dispose();
+        
+        estrategia.show();
+        
         fps++;
     }
     

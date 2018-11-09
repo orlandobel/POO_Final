@@ -15,8 +15,12 @@ public final class Sprite {
     private final int lado; //tamanio del lado de los spites
     private int x; //cordenadas en el eje x de la hoja de srpites
     private int y; //coordenadas en el eje y de la hoa de sprites
-    private int[] pixeles;
+    public int[] pixeles;
     private final HojaSprites hoja;
+    
+    /*Arreglo de sprites*/
+    public static Sprite ejemplo1 = new Sprite(32,0,0,HojaSprites.ejemplo);
+    /*------------------*/
     
     public Sprite(final int lado, final int columna, final int fila, final HojaSprites hoja) {
         this.lado = lado;

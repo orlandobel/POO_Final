@@ -19,6 +19,10 @@ public class HojaSprites {
     private final int ancho; //ancho de la hoja de spites
     public final int[] pixeles; //hoja de sprites
     
+    /*Coleccion de hojas de sprites*/
+    public static HojaSprites ejemplo = new HojaSprites("/Texturas/ejemplo.png",640,512);
+    /*Coleccion de hojas de sprites*/
+    
     public HojaSprites(final String ruta, final int ancho, final int alto) {
         this.alto = alto;
         this.ancho = ancho;

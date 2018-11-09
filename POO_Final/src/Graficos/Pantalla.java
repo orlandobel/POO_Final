@@ -12,7 +12,12 @@ package Graficos;
 public final class Pantalla {
     private final int alto;
     private final int ancho;
-    private final int[] pixeles;
+    public final int[] pixeles;
+    
+    /*Temporal*/
+    private final static int LADOSPRITE = 32;
+    private final static int MASCARASPRITE = LADOSPRITE - 1;
+    /*--------*/
     
     public Pantalla(final int ancho, final int alto) {
         this.ancho = ancho;
@@ -45,6 +50,9 @@ public final class Pantalla {
                 }
                 /*-------------------------------------------------*/
                 
+                /*temporal*/
+                pixeles[(posX+posY)*ancho] = Sprite.ejemplo1.pixeles[((j & LADOSPRITE) + (i & MASCARASPRITE)) * LADOSPRITE];
+                /*temporal*/
             }
         }
     }
