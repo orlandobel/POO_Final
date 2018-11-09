@@ -12,6 +12,7 @@ package Graficos;
 public final class Pantalla {
     private final int alto;
     private final int ancho;
+    
     public final int[] pixeles;
     
     /*Temporal*/
@@ -36,7 +37,7 @@ public final class Pantalla {
             int posY = i+compY; //coordenada en y
             
             /*Evita que nos salgamos de la pantalla en el eje y*/
-            if(posY<0||posY>=alto) {
+            if(posY<0 || posY>=alto) {
                 continue;
             }
             /*-------------------------------------------------*/
@@ -51,7 +52,7 @@ public final class Pantalla {
                 /*-------------------------------------------------*/
                 
                 /*temporal*/
-                pixeles[(posX+posY)*ancho] = Sprite.ejemplo1.pixeles[((j & LADOSPRITE) + (i & MASCARASPRITE)) * LADOSPRITE];
+                pixeles[posX+posY*ancho] = Sprite.ejemplo1.pixeles[(j & MASCARASPRITE) + (i & MASCARASPRITE) * LADOSPRITE];
                 /*temporal*/
             }
         }

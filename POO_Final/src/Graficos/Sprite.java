@@ -32,7 +32,7 @@ public final class Sprite {
         /*-----------------------------extrae un srpite-----------------------------*/
         for(int i=0;i<lado;i++) { //se mueve en el eje y
             for(int j=0;j<lado;j++) { //se mueve en el eje x
-                pixeles[(j+i)*lado] = hoja.pixeles[((j+x) + (i+y)) * hoja.getAncho()]; //obtiene el pixel en las coordenadas daas en la hoja de sprites
+                pixeles[j+i*lado] = hoja.pixeles[(j+x) + (i+y) * hoja.getAncho()]; //obtiene el pixel en las coordenadas daas en la hoja de sprites
             }
         }
         /*--------------------------------------------------------------------------*/
