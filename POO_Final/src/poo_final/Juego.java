@@ -5,11 +5,10 @@
  */
 package poo_final;
 
+import Controles.Teclado;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Dimension;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -29,11 +28,18 @@ public class Juego extends Canvas implements Runnable{
     
     private static JFrame ventana;
     private static Thread thread; //hilo principal
+    private static Teclado teclado;
     
     private static volatile boolean Ejecucion = false; //variable de inizializacion/finalizacion del bucle principal
     
     private Juego() {
+        init();
+    }
+    
+    private void init() {
         setPreferredSize(new Dimension(ANCHO,ALTO));
+        teclado = new Teclado();
+        addKeyListener(teclado);
         
         ventana = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -66,6 +72,20 @@ public class Juego extends Canvas implements Runnable{
     
     /*Atualiza el contenido a mostrar*/
     private void Actualizar() {
+        teclado.acualizar();
+        
+        if(teclado.arriba==true) {
+            System.out.println("Arriba");
+        } 
+        if(teclado.abajo==true) {
+            System.out.println("Abajo");
+        } 
+        if(teclado.izquierda==true) {
+            System.out.println("Izquierda");
+        } 
+        if(teclado.derecha==true) {
+            System.out.println("Derecha");
+        }
         aps++;
     }
     
@@ -86,6 +106,8 @@ public class Juego extends Canvas implements Runnable{
         double tiempoTranscurrido;
         double delta = 0;
         
+        requestFocus(); //establece esta ventana como la seleccionada por defecto
+        System.out.println("Hola");
         while(this.Ejecucion) {
             final long INICIO_BUCLE = System.nanoTime(); 
             
