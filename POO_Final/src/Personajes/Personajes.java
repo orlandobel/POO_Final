@@ -1,7 +1,7 @@
 /*
  * Clase padre donde naceran todos personajes, desde el principal, como los NPC
  */
-package poo_final;
+package Personajes;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
