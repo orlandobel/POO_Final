@@ -7,8 +7,11 @@ package poo_final;
 
 import Controles.Teclado;
 import Graficos.Pantalla;
+import Mapa.CargarMapa;
+import Mapa.Mapa;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -27,6 +30,8 @@ public class Juego extends Canvas implements Runnable{
     private static final int ANCHO = 800; //anco de ventana
     private static final int ALTO = 600; //alto de ventana
     private static final String NOMBRE = "Juego"; //nombre de ventana/juego
+    private static String contFPS = "";
+    private static String contAPS = "";
     
     /*Variables controladoras de frames y actualzaciones*/
     private static int aps = 0; //actualizaiones por segundo
@@ -36,6 +41,7 @@ public class Juego extends Canvas implements Runnable{
     private static int X = 0;
     private static int Y = 0;
     private static Pantalla p;
+    private static Mapa mapa;
     
     /*Variables de manipulacion de pixeles del juego*/
     private static BufferedImage imagen = new BufferedImage(ANCHO,ALTO,BufferedImage.TYPE_INT_RGB); //crea una imagen en el buffer
@@ -58,15 +64,18 @@ public class Juego extends Canvas implements Runnable{
         addKeyListener(teclado);
         
         p = new Pantalla(ANCHO,ALTO);
+        mapa = new CargarMapa("/GeneradorNiveles/ExportCastillo.png");
         
         ventana = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setResizable(false);
         ventana.setLayout(new BorderLayout());
         ventana.add(this, BorderLayout.CENTER);
+        ventana.setUndecorated(true);
         ventana.pack();
         ventana.setLocationRelativeTo(null); //esptablece la ventana en el centro por defecto
         ventana.setVisible(true);
+        
     }
     
     /*--------Inizializa el hilo y su ciclo--------*/
@@ -92,18 +101,22 @@ public class Juego extends Canvas implements Runnable{
     private void Actualizar() {
         teclado.acualizar();
         
-        if(teclado.arriba==true) {
-            System.out.println("Arriba");
+        if(teclado.arriba) {
+            Y--;
         } 
-        if(teclado.abajo==true) {
-            System.out.println("Abajo");
+        if(teclado.abajo) {
+            Y++;
         } 
-        if(teclado.izquierda==true) {
-            System.out.println("Izquierda");
+        if(teclado.izquierda) {
+            X--;
         } 
-        if(teclado.derecha==true) {
-            System.out.println("Derecha");
+        if(teclado.derecha) {
+            X++;
         }
+        if(teclado.salir) {
+            System.exit(0);
+        }
+        p.setDiferencias(X, Y);
         aps++;
     }
     
@@ -116,12 +129,16 @@ public class Juego extends Canvas implements Runnable{
         }
         
         p.Limpiar();
-        p.Mostrar(X,Y);
+        mapa.Mostrar(aps, aps, p);
         
-        System.arraycopy(p.pixeles,0,this.pixeles,0,this.pixeles.length);
+        System.arraycopy(p.pixeles,0,this.pixeles,0,this.pixeles.length);//copia el rray de pixeles de la clase pantalla en el de esta clase para hacer el dibujado
         
         Graphics g = estrategia.getDrawGraphics(); //obtiene los graficos a dibujar
         g.drawImage(imagen, 0, 0, getWidth(),getHeight(),null); //dibuja los graficos
+        g.setColor(Color.white);
+        g.fillRect(ANCHO/2,ALTO/2,32,32);
+        g.drawString(contAPS, 10, 20);
+        g.drawString(contFPS, 10, 35);
         g.dispose();
         
         estrategia.show();
@@ -133,8 +150,8 @@ public class Juego extends Canvas implements Runnable{
     @Override
     public void run() {
         final int NS_S = 1000000000; //constante de un nanosegundo
-        final byte ATS_OBJETIVO = 60; //fps objetivos
-        final double NS_ACTUALIZACION = NS_S / ATS_OBJETIVO; //nano segundos entre cada actualizacion
+        final byte APS_OBJETIVO = 60; //fps objetivos
+        final double NS_ACTUALIZACION = NS_S / APS_OBJETIVO; //nano segundos entre cada actualizacion
         
         long referenciaActualizacion = System.nanoTime();
         long referenciaContador = System.nanoTime();
@@ -142,7 +159,6 @@ public class Juego extends Canvas implements Runnable{
         double delta = 0;
         
         requestFocus(); //establece esta ventana como la seleccionada por defecto
-        System.out.println("Hola");
         while(this.Ejecucion) {
             final long INICIO_BUCLE = System.nanoTime(); 
             
@@ -162,8 +178,8 @@ public class Juego extends Canvas implements Runnable{
             /*-------------muestra aps y fps en el titulo de la ventana-------------*/
             if(System.nanoTime() - referenciaContador > NS_S) {
                 ventana.setTitle(NOMBRE + " APS: " + this.aps + " FPS: " + this.fps);
-                this.aps = 0;
-                this.fps = 0;
+                contAPS = "APS: "+aps;
+                contFPS = "FPS: "+fps;
                 referenciaContador = System.nanoTime();
             }
             /*----------------------------------------------------------------------*/

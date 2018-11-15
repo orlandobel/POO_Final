@@ -20,7 +20,7 @@ public class HojaSprites {
     public final int[] pixeles; //hoja de sprites
     
     /*Coleccion de hojas de sprites*/
-    public static HojaSprites ejemplo = new HojaSprites("/Texturas/wop.png",640,512);
+    public static HojaSprites Hoja1 = new HojaSprites("/Texturas/HojaMapeado.png",640,512);
     /*Coleccion de hojas de sprites*/
     
     public HojaSprites(final String ruta, final int ancho, final int alto) {
