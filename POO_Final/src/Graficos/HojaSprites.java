@@ -39,4 +39,8 @@ public class HojaSprites {
     public int getAncho() {
         return this.ancho;
     }
+    
+    public int getAlto() {
+        return this.alto;
+    }
 }

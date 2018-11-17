@@ -20,7 +20,6 @@ public class CargarMapa extends Mapa{
     
     public CargarMapa(String ruta) {
         super(ruta);
-        
     }
     
     protected void SubirMapa(String ruta) {
@@ -47,79 +46,79 @@ public class CargarMapa extends Mapa{
         for(int i=0;i<pixeles.length;i++) {
             for(int j=0;j<pixeles.length;j++) {
                 switch(pixeles[i]) {
-                    case 0xff743115:
+                    case 0xff66341d:
                         indexTiles[i] = Tiles.TIERRA;
                         continue;
-                    case 0xffa3b6d5:
+                    case 0xffa7b5d3:
                         indexTiles[i] = Tiles.CIELO1;
                         continue;
-                    case 0xff9caeca:
+                    case 0xffa0acc8:
                         indexTiles[i] = Tiles.CIELO2;
                         continue;
-                    case 0xffa8b6cd:
+                    case 0xffabb5cb:
                         indexTiles[i] = Tiles.CIELO3;
                         continue;
-                    case 0xff6c6767:
+                    case 0xff6a6767:
                         indexTiles[i] = Tiles.TORRE_SUP_IZQ;
                         continue;
-                    case 0xff726262:
-                        indexTiles[i] = Tiles.TORRE_SUP_DER;
+                    case 0xff6d6262:
+                        indexTiles[i] = Tiles.Invertir(Tiles.TORRE_SUP_IZQ.s);
                         continue;
-                    case 0xff615c5c:
+                    case 0xff605c5c:
                         indexTiles[i] = Tiles.TORRE_MID_IZQ;
                         continue;
-                    case 0xff645555:
+                   /* case 0xff605656:
                         indexTiles[i] = Tiles.TORRE_MID_DER;
-                        continue;
+                        continue;*/
                     case 0xff636262:
                         indexTiles[i] = Tiles.TORRE_BASE_IZQ;
                         continue;
-                    case 0xff676060:
+                    /*case 0xff656060:
                         indexTiles[i] = Tiles.TORRE_BASE_DER;
-                        continue;
-                    case 0xff292626:
+                        continue;*/
+                    case 0xff2c2a2a:
                         indexTiles[i] = Tiles.TORRE_BACK_IZQ;
                         continue;
-                    case 0xff2b2323:
+                    /*case 0xff2d2828:
                         indexTiles[i] = Tiles.TORRE_BACK_DER;
-                        continue;
-                    case 0xff747070:
+                        continue;*/
+                    case 0xff726f6f:
                         indexTiles[i] = Tiles.PUENES_TORRES_IZQ;
                         continue;
-                    case 0xff766a6a:
+                    /*case 0xff726a6a:
                         indexTiles[i] = Tiles.PUENES_TORRES_DER;
-                        continue;
-                    case 0xffff9400:
+                        continue;*/
+                    case 0xfff49316:
                         indexTiles[i] = Tiles.BANDERA1_IZQ;
                         continue;
-                    case 0xffff9600:
+                    /*case 0xfff3951b:
                         indexTiles[i] = Tiles.BANDERA1_DER;
-                        continue;
-                    case 0xff776d6d:
+                        continue;*/
+                    case 0xff746d6d:
                         indexTiles[i] = Tiles.SUPERIOR_VENTANA_IZQ;
                         continue;
-                    case 0xff796868:
+                    /*case 0xff746868:
                         indexTiles[i] = Tiles.SUPERIOR_VENTANA_DER;
-                        continue;
-                    case 0xff8798bb:
+                        continue;*/
+                    case 0xff8b97b8:
                         indexTiles[i] = Tiles.VENTANA_CIRCULAR_IZQ;
                         continue;
-                    case 0xff7f95bd:
+                    /*case 0xff8594ba:
                         indexTiles[i] = Tiles.VENTANA_CIRCULAR_DER;
-                        continue;
-                    case 0xffffa93a:
+                        continue;*/
+                    case 0xfff4a845:
                         indexTiles[i] = Tiles.BANDERA2_IZQ;
                         continue;
-                    case 0xffffad45:
+                    /*case 0xfff3ac4e:
                         indexTiles[i] = Tiles.BANDERA2_DER;
-                        continue;
-                    case 0xff6d0e0e:
+                        continue;*/
+                    case 0xff5e1616:
                         indexTiles[i] = Tiles.PICO_TORRE;
                         continue;
-                    case 0xffa4b3d1:
+                    case 0xffa7b1cf:
                         indexTiles[i] = Tiles.VENTANA_CENTRO;
                         continue;
-                    case 0xff523d3d:
+                    case 0xff4e3f3f:
                         indexTiles[i] = Tiles.SUPERIOR_ENTRADA;
                         continue;
                     case 0xff000000:

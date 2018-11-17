@@ -26,23 +26,23 @@ public class Tiles {
     public static final Tiles CIELO2 = new Tiles(Sprite.CIELO2,true);
     public static final Tiles CIELO3 = new Tiles(Sprite.CIELO3,true);
     public static final Tiles TORRE_SUP_IZQ = new Tiles(Sprite.TORRE_SUP_IZQ,true);
-    public static final Tiles TORRE_SUP_DER = new Tiles(Sprite.TORRE_SUP_DER,true);
+//    public static final Tiles TORRE_SUP_DER = new Tiles(Sprite.TORRE_SUP_DER,true);
     public static final Tiles TORRE_MID_IZQ = new Tiles(Sprite.TORRE_MID_IZQ,true);
-    public static final Tiles TORRE_MID_DER = new Tiles(Sprite.TORRE_MID_DER,true);
+//    public static final Tiles TORRE_MID_DER = new Tiles(Sprite.TORRE_MID_DER,true);
     public static final Tiles TORRE_BASE_IZQ = new Tiles(Sprite.TOORE_BASE_IZQ,true);
-    public static final Tiles TORRE_BASE_DER = new Tiles(Sprite.TOORE_BASE_DER,true);
+//    public static final Tiles TORRE_BASE_DER = new Tiles(Sprite.TOORE_BASE_DER,true);
     public static final Tiles TORRE_BACK_IZQ = new Tiles(Sprite.TORRE_BACK_IZQ,true);
-    public static final Tiles TORRE_BACK_DER = new Tiles(Sprite.TORRE_BACK_DER,true);
+//    public static final Tiles TORRE_BACK_DER = new Tiles(Sprite.TORRE_BACK_DER,true);
     public static final Tiles PUENES_TORRES_IZQ = new Tiles(Sprite.PUENTES_TORRES_IZQ,true);
-    public static final Tiles PUENES_TORRES_DER = new Tiles(Sprite.PUENTES_TORRES_DER,true);
+//    public static final Tiles PUENES_TORRES_DER = new Tiles(Sprite.PUENTES_TORRES_DER,true);
     public static final Tiles BANDERA1_IZQ = new Tiles(Sprite.BANDERA1_IZQ,true);
-    public static final Tiles BANDERA1_DER = new Tiles(Sprite.BANDERA1_DER,true);
+//    public static final Tiles BANDERA1_DER = new Tiles(Sprite.BANDERA1_DER,true);
     public static final Tiles SUPERIOR_VENTANA_IZQ = new Tiles(Sprite.SUPERIOR_VENTANA_IZQ,true);
-    public static final Tiles SUPERIOR_VENTANA_DER = new Tiles(Sprite.SUPERIOR_VENTANA_DER,true);
+//    public static final Tiles SUPERIOR_VENTANA_DER = new Tiles(Sprite.SUPERIOR_VENTANA_DER,true);
     public static final Tiles VENTANA_CIRCULAR_IZQ = new Tiles(Sprite.VENTANA_CIRCULAR_IZQ,true);
-    public static final Tiles VENTANA_CIRCULAR_DER = new Tiles(Sprite.VENTANA_CIRCULAR_DER,true);
+//    public static final Tiles VENTANA_CIRCULAR_DER = new Tiles(Sprite.VENTANA_CIRCULAR_DER,true);
     public static final Tiles BANDERA2_IZQ = new Tiles(Sprite.BANDERA2_IZQ,true);
-    public static final Tiles BANDERA2_DER = new Tiles(Sprite.BANDERA2_DER,true);
+//    public static final Tiles BANDERA2_DER = new Tiles(Sprite.BANDERA2_DER,true);
     public static final Tiles PICO_TORRE = new Tiles(Sprite.PICO_TORRE,true);
     public static final Tiles VENTANA_CENTRO = new Tiles(Sprite.VENTANA_CENTRO,true);
     public static final Tiles SUPERIOR_ENTRADA = new Tiles(Sprite.SUPERIOR_ENTRADA,true);
@@ -54,11 +54,25 @@ public class Tiles {
         this.solido = solido;
     }
     
+    public Tiles(Sprite s) {
+        this.s = s;
+    }
+    
     public void Mostrar(int x,int y,Pantalla p) {
-        p.MostrarTiles(x, y, this);
+        p.MostrarTiles(x<<5,y<<5,this);
+    }
+    
+    public static Tiles Invertir(Sprite s) {
+        Sprite sAux = new Sprite(s.getLado(),s.getX(),s.getY(),s);
+        Tiles tAux = new Tiles(sAux);
+        return tAux;
     }
     
     public boolean hitBox() {
         return false;
+    }
+    
+    public void setSolido(boolean solido) {
+        this.solido = solido;
     }
 }

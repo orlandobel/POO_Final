@@ -64,7 +64,7 @@ public class Juego extends Canvas implements Runnable{
         addKeyListener(teclado);
         
         p = new Pantalla(ANCHO,ALTO);
-        mapa = new CargarMapa("/GeneradorNiveles/ExportCastillo.png");
+        mapa = new CargarMapa("/GeneradorNiveles/MapaCastillo.png");
         
         ventana = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -129,7 +129,8 @@ public class Juego extends Canvas implements Runnable{
         }
         
         p.Limpiar();
-        mapa.Mostrar(aps, aps, p);
+//        p.Mostrar(X,Y);
+        mapa.Mostrar(X, Y, p);
         
         System.arraycopy(p.pixeles,0,this.pixeles,0,this.pixeles.length);//copia el rray de pixeles de la clase pantalla en el de esta clase para hacer el dibujado
         

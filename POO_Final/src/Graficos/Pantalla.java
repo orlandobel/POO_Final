@@ -15,14 +15,16 @@ public final class Pantalla {
     private final int alto;
     private final int ancho;
     
-    private int difX;
-    private int difY;
+    /*Control de desplazamento en el mapa del ppersonaje, esto para redibujar la pantalla segun se nesecite*/
+    private int difX; 
+    private int difY; 
+    /*-----------------------------------------------------------------------------------------------------*/
     
     public final int[] pixeles;
     
     /*Temporal*/
-    private final static int LADOSPRITE = 32;
-    private final static int MASCARASPRITE = LADOSPRITE - 1;
+//    private final static int LADOSPRITE = 32;
+//    private final static int MASCARASPRITE = LADOSPRITE - 1;
     /*--------*/
     
     public Pantalla(final int ancho, final int alto) {
@@ -37,31 +39,31 @@ public final class Pantalla {
         }
     }
     /*Temporal*/
-    public void Mostrar(final int compX, final int compY) { //comp se refiere al movimiento del personaje en el eje
-        for(int i=0;i<alto;i++) {
-            int posY = i+compY; //coordenada en y
-            
-            /*Evita que nos salgamos de la pantalla en el eje y*/
-            if(posY<0 || posY>=alto) {
-                continue;
-            }
-            /*-------------------------------------------------*/
-            
-            for(int j=0;j<ancho;j++) {
-                int posX = j+compX; //coordenada en y;
-                
-                /*Evita que nos salgamos de la pantalla en el eje x*/
-                if(posX<0||posX>=ancho) {
-                    continue;
-                }
-                /*-------------------------------------------------*/
-                
-                /*temporal*/
-                pixeles[posX+posY*ancho] = Sprite.TIERRA.pixeles[(j & MASCARASPRITE) + (i & MASCARASPRITE) * LADOSPRITE];
-                /*temporal*/
-            }
-        }
-    }
+//    public void Mostrar(final int compX, final int compY) { //comp se refiere al movimiento del personaje en el eje
+//        for(int i=0;i<alto;i++) {
+//            int posY = i+compY; //coordenada en y
+//            
+//            /*Evita que nos salgamos de la pantalla en el eje y*/
+//            if(posY<0 || posY>=alto) {
+//                continue;
+//            }
+//            /*-------------------------------------------------*/
+//            
+//            for(int j=0;j<ancho;j++) {
+//                int posX = j+compX; //coordenada en y;
+//                
+//                /*Evita que nos salgamos de la pantalla en el eje x*/
+//                if(posX<0||posX>=ancho) {
+//                    continue;
+//                }
+//                /*-------------------------------------------------*/
+//                
+//                /*temporal*/
+//                pixeles[posX+posY*ancho] = Sprite.TIERRA.pixeles[(j & MASCARASPRITE) + (i & MASCARASPRITE) * LADOSPRITE];
+//                /*temporal*/
+//            }
+//        }
+//    }
     /*--------*/
     
     public void MostrarTiles(int compX,int compY,Tiles t) {
@@ -73,14 +75,14 @@ public final class Pantalla {
             int posY = i+compY;
             for(int j=0;j<t.s.getLado();j++) { //eje x
                 int posX = j+compX;
-                if(posX<=0||posX>ancho||posY<0||posY>alto) {
+                if(posX<-t.s.getLado()||posX>=ancho||posY<0||posY>=alto) {
                     break;
                 }
                 if(posX<0) {
                     posX = 0;
                 }
                
-               pixeles[posX+posY*ancho] = t.s.pixeles[i+j*t.s.getLado()];
+               pixeles[posX+posY*ancho] = t.s.pixeles[j+i*t.s.getLado()];
            } 
         }
     }
