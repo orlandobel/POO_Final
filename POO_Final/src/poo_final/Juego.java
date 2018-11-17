@@ -9,6 +9,7 @@ import Controles.Teclado;
 import Graficos.Pantalla;
 import Mapa.CargarMapa;
 import Mapa.Mapa;
+import PruebaSonido.Sonido;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -82,7 +83,8 @@ public class Juego extends Canvas implements Runnable{
     private synchronized void Iniciar() {
         this.Ejecucion = true;
         this.thread = new Thread(this, "Graficos"); //crea un nuevo hilo llamado graficos
-        thread.start(); //empieza el hilo
+        thread.start();
+        Sonido.BACK.loop();
     }
     /*---------------------------------------------*/
     
@@ -182,6 +184,8 @@ public class Juego extends Canvas implements Runnable{
                 contFPS = "FPS: "+fps;
                 referenciaContador = System.nanoTime();
             }
+            
+            
             /*----------------------------------------------------------------------*/
         }
     }
@@ -189,6 +193,8 @@ public class Juego extends Canvas implements Runnable{
     
     public static void main(String args[]) {
         Juego j = new Juego();
+       
         j.Iniciar();
+        
     }
 }
