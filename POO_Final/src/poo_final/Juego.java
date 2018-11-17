@@ -6,6 +6,7 @@
 package poo_final;
 
 import Controles.Teclado;
+import Ente.Personajes.Principal;
 import Graficos.Pantalla;
 import Mapa.CargarMapa;
 import Mapa.Mapa;
@@ -39,10 +40,11 @@ public class Juego extends Canvas implements Runnable{
     private static int fps = 0; //frames por segundo
     /*--------------------------------------------------*/
     
-    private static int X = 0;
-    private static int Y = 0;
+   
     private static Pantalla p;
     private static Mapa mapa;
+    
+    private Principal pepito;
     
     /*Variables de manipulacion de pixeles del juego*/
     private static BufferedImage imagen = new BufferedImage(ANCHO,ALTO,BufferedImage.TYPE_INT_RGB); //crea una imagen en el buffer
@@ -66,6 +68,7 @@ public class Juego extends Canvas implements Runnable{
         
         p = new Pantalla(ANCHO,ALTO);
         mapa = new CargarMapa("/GeneradorNiveles/MapaCastillo.png");
+        pepito = new Principal(teclado);
         
         ventana = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -102,23 +105,11 @@ public class Juego extends Canvas implements Runnable{
     /*Atualiza el contenido a mostrar*/
     private void Actualizar() {
         teclado.acualizar();
-        
-        if(teclado.arriba) {
-            Y--;
-        } 
-        if(teclado.abajo) {
-            Y++;
-        } 
-        if(teclado.izquierda) {
-            X--;
-        } 
-        if(teclado.derecha) {
-            X++;
-        }
+        pepito.actualizar();
         if(teclado.salir) {
             System.exit(0);
         }
-        p.setDiferencias(X, Y);
+        p.setDiferencias(pepito.getX(), pepito.getY());
         aps++;
     }
     
@@ -132,7 +123,7 @@ public class Juego extends Canvas implements Runnable{
         
         p.Limpiar();
 //        p.Mostrar(X,Y);
-        mapa.Mostrar(X, Y, p);
+        mapa.Mostrar(pepito.getX(), pepito.getY(), p);
         
         System.arraycopy(p.pixeles,0,this.pixeles,0,this.pixeles.length);//copia el rray de pixeles de la clase pantalla en el de esta clase para hacer el dibujado
         
@@ -142,6 +133,7 @@ public class Juego extends Canvas implements Runnable{
         g.fillRect(ANCHO/2,ALTO/2,32,32);
         g.drawString(contAPS, 10, 20);
         g.drawString(contFPS, 10, 35);
+        g.drawString("Pepito: ("+pepito.getX()+", "+pepito.getY()+")", 10, 50);
         g.dispose();
         
         estrategia.show();
