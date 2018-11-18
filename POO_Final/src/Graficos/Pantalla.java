@@ -5,6 +5,7 @@
  */
 package Graficos;
 
+import Ente.Personajes.Principal;
 import Mapa.Tiles.Tiles;
 
 /**
@@ -83,6 +84,26 @@ public final class Pantalla {
                 }
                
                pixeles[posX+posY*ancho] = t.s.pixeles[j+i*t.s.getLado()];
+           } 
+        }
+    }
+    
+    public void MostrarJugador(int compX, int compY, Principal pepito){
+        compX-= difX;
+        compY-= difY;
+        
+        for(int i=0;i<pepito.getImagen().getLado();i++) { //eje y
+            int posY = i+compY;
+            for(int j=0;j<pepito.getImagen().getLado();j++) { //eje x
+                int posX = j+compX;
+                if(posX<-pepito.getImagen().getLado()||posX>=ancho||posY<0||posY>=alto) {
+                    break;
+                }
+                if(posX<0) {
+                    posX = 0;
+                }
+               
+               pixeles[posX+posY*ancho] = pepito.getImagen().pixeles[j+i*pepito.getImagen().getLado()];
            } 
         }
     }

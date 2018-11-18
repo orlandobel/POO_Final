@@ -18,6 +18,10 @@ public final class Sprite {
     public int[] pixeles;
     private final HojaSprites hoja;
     
+    //Sprite del jugadorPrueba
+    public static Sprite JUGADOR_PRUEBA = new Sprite(32,0,0,HojaSprites.personajePrueba);
+    //
+    
     /*Arreglo de sprites*/
     public static Sprite VACIO = new Sprite(32,19,0,HojaSprites.Hoja1);
     public static Sprite TIERRA = new Sprite(32,0,0,HojaSprites.Hoja1);

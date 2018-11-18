@@ -8,6 +8,7 @@ package poo_final;
 import Controles.Teclado;
 import Ente.Personajes.Principal;
 import Graficos.Pantalla;
+import Graficos.Sprite;
 import Mapa.CargarMapa;
 import Mapa.Mapa;
 import PruebaSonido.Sonido;
@@ -68,7 +69,7 @@ public class Juego extends Canvas implements Runnable{
         
         p = new Pantalla(ANCHO,ALTO);
         mapa = new CargarMapa("/GeneradorNiveles/MapaCastillo.png");
-        pepito = new Principal(teclado, 450, 450);
+        pepito = new Principal(teclado, 224, 224, Sprite.JUGADOR_PRUEBA);
         
         ventana = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -123,14 +124,14 @@ public class Juego extends Canvas implements Runnable{
         
         p.Limpiar();
 //        p.Mostrar(X,Y);
-        mapa.Mostrar(pepito.getX()/2-p.getAncho()/2, pepito.getY()/2-p.getAlto()/2, p);
-        
+        mapa.Mostrar(pepito.getX()-p.getAncho()/2, 
+                pepito.getY()-p.getAlto()/2, p);
+        pepito.mostrar(p);
         System.arraycopy(p.pixeles,0,this.pixeles,0,this.pixeles.length);//copia el rray de pixeles de la clase pantalla en el de esta clase para hacer el dibujado
         
         Graphics g = estrategia.getDrawGraphics(); //obtiene los graficos a dibujar
         g.drawImage(imagen, 0, 0, getWidth(),getHeight(),null); //dibuja los graficos
         g.setColor(Color.red);
-        g.fillRect(ANCHO/2,ALTO/2,32,32);
         g.drawString(contAPS, 10, 20);
         g.drawString(contFPS, 10, 35);
         g.drawString("Pepito: ("+pepito.getX()+", "+pepito.getY()+")", 10, 50);

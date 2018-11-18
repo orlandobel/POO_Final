@@ -4,6 +4,7 @@
 package Ente.Personajes;
 
 import Ente.Ente;
+import Graficos.Pantalla;
 import Graficos.Sprite;
 
 /**
@@ -21,7 +22,7 @@ public abstract class Personajes extends Ente{
    @Override
    public void actualizar(){}
    @Override
-   public void mostrar (){}
+   public void mostrar (Pantalla pantalla){}
     
    public void Movimiento(int movex, int movey){
        if( movex <0 ){ //derecha
@@ -38,6 +39,7 @@ public abstract class Personajes extends Ente{
        }
        
        if(!isEliminado()){
+           
            setX(movex);
            setY(movey);
        }
@@ -45,5 +47,12 @@ public abstract class Personajes extends Ente{
    }
    
    
-   private boolean choque(){return false;};
+   private boolean choque(){
+       return false;
+   }
+
+    public Sprite getImagen() {
+        return Imagen;
+    }
+   
 }

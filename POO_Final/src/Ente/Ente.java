@@ -5,6 +5,7 @@
  */
 package Ente;
 
+import Graficos.Pantalla;
 import Mapa.Mapa;
 
 /**
@@ -15,8 +16,10 @@ public class Ente {
     protected int x,y;
     protected boolean eliminado = false;
     protected Mapa mapa;
+    protected boolean colision=false;
+    
     public void actualizar(){}
-    public void mostrar (){}
+    public void mostrar (Pantalla pantalla){}
     public void eliminar(){this.eliminado=true;}
     
     public int getX() {

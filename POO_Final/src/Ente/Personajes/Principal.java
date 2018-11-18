@@ -6,6 +6,8 @@
 package Ente.Personajes;
 
 import Controles.Teclado;
+import Graficos.Pantalla;
+import Graficos.Sprite;
 
 /**
  *
@@ -15,12 +17,14 @@ public class Principal extends Personajes {
     
     private Teclado teclado;
     
-    public Principal(Teclado teclado){
+    public Principal(Teclado teclado, Sprite imagen){
         this.teclado=teclado;
+        this.Imagen=imagen;
     }
     
-    public Principal(Teclado teclado, int x, int y){
+    public Principal(Teclado teclado, int x, int y, Sprite imagen){
         this.teclado=teclado;
+        this.Imagen=imagen;
         this.x=x;
         this.y=y;
     }
@@ -40,10 +44,11 @@ public class Principal extends Personajes {
             movex++;
         if (movex !=0 || movey !=0)
             super.Movimiento(movex, movey);
-        
     }
     
     @Override
-    public void mostrar(){};
+    public void mostrar(Pantalla pantalla){
+        pantalla.MostrarJugador(x, y, this);
+    };
     
 }
