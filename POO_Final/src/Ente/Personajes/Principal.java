@@ -8,6 +8,7 @@ package Ente.Personajes;
 import Controles.Teclado;
 import Graficos.Pantalla;
 import Graficos.Sprite;
+import Mapa.Mapa;
 
 /**
  *
@@ -17,16 +18,18 @@ public class Principal extends Personajes {
     
     private Teclado teclado;
     
-    public Principal(Teclado teclado, Sprite imagen){
+    public Principal(Teclado teclado, Sprite imagen, Mapa mapa){
         this.teclado=teclado;
         this.Imagen=imagen;
+        this.mapa=mapa;
     }
     
-    public Principal(Teclado teclado, int x, int y, Sprite imagen){
+    public Principal(Teclado teclado, int x, int y, Sprite imagen, Mapa mapa){
         this.teclado=teclado;
         this.Imagen=imagen;
         this.x=x;
         this.y=y;
+        this.mapa=mapa;
     }
     
     @Override

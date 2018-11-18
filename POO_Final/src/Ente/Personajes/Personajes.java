@@ -39,16 +39,45 @@ public abstract class Personajes extends Ente{
        }
        
        if(!isEliminado()){
-           
+           if(!Colisionado(movex,0))
            setX(movex);
+           if(!Colisionado(0,movey))
            setY(movey);
        }
     
    }
    
-   
-   private boolean choque(){
-       return false;
+   private boolean Colisionado(int movex, int movey){
+       boolean colision=false;
+       
+       int posx=x+movex;
+       int posy=y+movey;
+       
+       int margenizq= -3;
+       int margender= 4;
+       int margenup= -10;
+       int margendown= 10;
+       
+       int bordeizq= (posx+margender)/Imagen.getLado();
+       int bordeder= (posx+margender+margenizq)/Imagen.getLado();
+       int bordeup= (posy+margendown)/Imagen.getLado();
+       int bordedown= (posx+margendown+margenup)/Imagen.getLado();
+       
+       
+       if(mapa.getTiles(bordeizq+bordeup*mapa.getAncho()).isSolido()){
+           colision=true;
+       }
+       if(mapa.getTiles(bordeder+bordeup*mapa.getAncho()).isSolido()){
+           colision=true;
+       }
+       if(mapa.getTiles(bordeizq+bordedown*mapa.getAncho()).isSolido()){
+           colision=true;
+       }
+       if(mapa.getTiles(bordeder+bordedown*mapa.getAncho()).isSolido()){
+           colision=true;
+       }
+       
+       return colision;
    }
 
     public Sprite getImagen() {

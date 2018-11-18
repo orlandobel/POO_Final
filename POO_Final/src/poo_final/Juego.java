@@ -69,14 +69,14 @@ public class Juego extends Canvas implements Runnable{
         
         p = new Pantalla(ANCHO,ALTO);
         mapa = new CargarMapa("/GeneradorNiveles/MapaCastillo.png");
-        pepito = new Principal(teclado, 224, 224, Sprite.JUGADOR_PRUEBA);
+        pepito = new Principal(teclado, 224, 224, Sprite.JUGADOR_PRUEBA, mapa);
         
         ventana = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setResizable(false);
         ventana.setLayout(new BorderLayout());
         ventana.add(this, BorderLayout.CENTER);
-        ventana.setUndecorated(true);
+        //ventana.setUndecorated(true);
         ventana.pack();
         ventana.setLocationRelativeTo(null); //esptablece la ventana en el centro por defecto
         ventana.setVisible(true);
@@ -124,8 +124,8 @@ public class Juego extends Canvas implements Runnable{
         
         p.Limpiar();
 //        p.Mostrar(X,Y);
-        mapa.Mostrar(pepito.getX()-p.getAncho()/2, 
-                pepito.getY()-p.getAlto()/2, p);
+        mapa.Mostrar(pepito.getX()-p.getAncho()/2-pepito.getImagen().getLado()/2, 
+                pepito.getY()-p.getAlto()/2-pepito.getImagen().getLado()/2, p);
         pepito.mostrar(p);
         System.arraycopy(p.pixeles,0,this.pixeles,0,this.pixeles.length);//copia el rray de pixeles de la clase pantalla en el de esta clase para hacer el dibujado
         
