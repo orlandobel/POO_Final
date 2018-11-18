@@ -61,4 +61,19 @@ public abstract class Mapa {
             }
         }
     }
+
+  public Tiles getTiles(int x){
+      return indexTiles[x];
+  }
+
+    public int getAncho() {
+        return ancho;
+    }
+
+    public int getAlto() {
+        return alto;
+    }
+    
+    
+    
 }

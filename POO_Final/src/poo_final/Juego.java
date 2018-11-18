@@ -6,7 +6,9 @@
 package poo_final;
 
 import Controles.Teclado;
+import Ente.Personajes.Principal;
 import Graficos.Pantalla;
+import Graficos.Sprite;
 import Mapa.CargarMapa;
 import Mapa.Mapa;
 import PruebaSonido.Sonido;
@@ -28,8 +30,8 @@ public class Juego extends Canvas implements Runnable{
     
     private static final long serialVersionUID = 1L; //identificador
     
-    private static final int ANCHO = 800; //anco de ventana
-    private static final int ALTO = 600; //alto de ventana
+    private static final int ANCHO = 320; //anco de ventana
+    private static final int ALTO = 320; //alto de ventana
     private static final String NOMBRE = "Juego"; //nombre de ventana/juego
     private static String contFPS = "";
     private static String contAPS = "";
@@ -39,10 +41,11 @@ public class Juego extends Canvas implements Runnable{
     private static int fps = 0; //frames por segundo
     /*--------------------------------------------------*/
     
-    private static int X = 0;
-    private static int Y = 0;
+   
     private static Pantalla p;
     private static Mapa mapa;
+    
+    private Principal pepito;
     
     /*Variables de manipulacion de pixeles del juego*/
     private static BufferedImage imagen = new BufferedImage(ANCHO,ALTO,BufferedImage.TYPE_INT_RGB); //crea una imagen en el buffer
@@ -66,13 +69,14 @@ public class Juego extends Canvas implements Runnable{
         
         p = new Pantalla(ANCHO,ALTO);
         mapa = new CargarMapa("/GeneradorNiveles/MapaCastillo.png");
+        pepito = new Principal(teclado, 224, 224, Sprite.JUGADOR_PRUEBA, mapa);
         
         ventana = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setResizable(false);
         ventana.setLayout(new BorderLayout());
         ventana.add(this, BorderLayout.CENTER);
-        ventana.setUndecorated(true);
+        //ventana.setUndecorated(true);
         ventana.pack();
         ventana.setLocationRelativeTo(null); //esptablece la ventana en el centro por defecto
         ventana.setVisible(true);
@@ -102,23 +106,11 @@ public class Juego extends Canvas implements Runnable{
     /*Atualiza el contenido a mostrar*/
     private void Actualizar() {
         teclado.acualizar();
-        
-        if(teclado.arriba) {
-            Y--;
-        } 
-        if(teclado.abajo) {
-            Y++;
-        } 
-        if(teclado.izquierda) {
-            X--;
-        } 
-        if(teclado.derecha) {
-            X++;
-        }
+        pepito.actualizar();
         if(teclado.salir) {
             System.exit(0);
         }
-        p.setDiferencias(X, Y);
+        //p.setDiferencias(pepito.getX()-p.getAncho()/2-pepito.getImagen().getLado()/2, pepito.getY()-p.getAlto()/2-pepito.getImagen().getLado()/2);
         aps++;
     }
     
@@ -130,16 +122,19 @@ public class Juego extends Canvas implements Runnable{
             return;
         }
         
-        mapa.Mostrar(X, Y, p);
-        
+        //p.Limpiar();
+//        p.Mostrar(X,Y);
+        mapa.Mostrar(pepito.getX()-p.getAncho()/2-pepito.getImagen().getLado()/2, 
+                pepito.getY()-p.getAlto()/2-pepito.getImagen().getLado()/2, p);
+        pepito.mostrar(p);
         System.arraycopy(p.pixeles,0,this.pixeles,0,this.pixeles.length);//copia el rray de pixeles de la clase pantalla en el de esta clase para hacer el dibujado
         
         Graphics g = estrategia.getDrawGraphics(); //obtiene los graficos a dibujar
         g.drawImage(imagen, 0, 0, getWidth(),getHeight(),null); //dibuja los graficos
-        g.setColor(Color.white);
-        g.fillRect(ANCHO/2,ALTO/2,32,32);
+        g.setColor(Color.red);
         g.drawString(contAPS, 10, 20);
         g.drawString(contFPS, 10, 35);
+        g.drawString("Pepito: ("+pepito.getX()+", "+pepito.getY()+")", 10, 50);
         g.dispose();
         
         estrategia.show();
