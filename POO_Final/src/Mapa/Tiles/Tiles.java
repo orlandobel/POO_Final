@@ -30,7 +30,7 @@ public class Tiles {
     public static final Tiles TORRE_MID_IZQ = new Tiles(Sprite.TORRE_MID_IZQ);
     public static final Tiles TORRE_MID_DER = new Tiles(Sprite.TORRE_MID_DER);
     public static final Tiles TORRE_BASE_IZQ = new Tiles(Sprite.TOORE_BASE_IZQ);
-    public static final Tiles TORRE_BASE_DER = new Tiles(Sprite.TOORE_BASE_DER);
+    public static final Tiles TORRE_BASE_DER = new Tiles(Sprite.TOORE_BASE_DER,true);
     public static final Tiles TORRE_BACK_IZQ = new Tiles(Sprite.TORRE_BACK_IZQ);
     public static final Tiles TORRE_BACK_DER = new Tiles(Sprite.TORRE_BACK_DER);
     public static final Tiles PUENES_TORRES_IZQ = new Tiles(Sprite.PUENTES_TORRES_IZQ);

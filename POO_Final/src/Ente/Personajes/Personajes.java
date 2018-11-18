@@ -39,10 +39,12 @@ public abstract class Personajes extends Ente{
        }
        
        if(!isEliminado()){
-           if(!Colisionado(movex,0))
-           setX(movex);
-           if(!Colisionado(0,movey))
-           setY(movey);
+           if(!Colisionado(movex,0)){
+                setX(movex);
+           }
+           if(!Colisionado(0,movey)){
+                setY(movey);
+           }
        }
     
    }
@@ -67,10 +69,10 @@ public abstract class Personajes extends Ente{
        if(mapa.getTiles(bordeizq+bordeup*mapa.getAncho()).isSolido()){
            colision=true;
        }
-       if(mapa.getTiles(bordeder+bordeup*mapa.getAncho()).isSolido()){
+       if(mapa.getTiles(bordeizq+bordedown*mapa.getAncho()).isSolido()){
            colision=true;
        }
-       if(mapa.getTiles(bordeizq+bordedown*mapa.getAncho()).isSolido()){
+       if(mapa.getTiles(bordeder+bordeup*mapa.getAncho()).isSolido()){
            colision=true;
        }
        if(mapa.getTiles(bordeder+bordedown*mapa.getAncho()).isSolido()){

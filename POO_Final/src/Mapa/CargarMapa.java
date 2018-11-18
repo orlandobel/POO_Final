@@ -67,51 +67,51 @@ public class CargarMapa extends Mapa{
                     case 0xff605c5c:
                         indexTiles[i] = Tiles.TORRE_MID_IZQ;
                         continue;
-                   /* case 0xff605656:
+                    case 0xff605656:
                         indexTiles[i] = Tiles.TORRE_MID_DER;
-                        continue;*/
+                        continue;
                     case 0xff636262:
                         indexTiles[i] = Tiles.TORRE_BASE_IZQ;
                         continue;
-                    /*case 0xff656060:
+                    case 0xff656060:
                         indexTiles[i] = Tiles.TORRE_BASE_DER;
-                        continue;*/
+                        continue;
                     case 0xff2c2a2a:
                         indexTiles[i] = Tiles.TORRE_BACK_IZQ;
                         continue;
-                    /*case 0xff2d2828:
+                    case 0xff2d2828:
                         indexTiles[i] = Tiles.TORRE_BACK_DER;
-                        continue;*/
+                        continue;
                     case 0xff726f6f:
                         indexTiles[i] = Tiles.PUENES_TORRES_IZQ;
                         continue;
-                    /*case 0xff726a6a:
+                    case 0xff726a6a:
                         indexTiles[i] = Tiles.PUENES_TORRES_DER;
-                        continue;*/
+                        continue;
                     case 0xfff49316:
                         indexTiles[i] = Tiles.BANDERA1_IZQ;
                         continue;
-                    /*case 0xfff3951b:
+                    case 0xfff3951b:
                         indexTiles[i] = Tiles.BANDERA1_DER;
-                        continue;*/
+                        continue;
                     case 0xff746d6d:
                         indexTiles[i] = Tiles.SUPERIOR_VENTANA_IZQ;
                         continue;
-                    /*case 0xff746868:
+                    case 0xff746868:
                         indexTiles[i] = Tiles.SUPERIOR_VENTANA_DER;
-                        continue;*/
+                        continue;
                     case 0xff8b97b8:
                         indexTiles[i] = Tiles.VENTANA_CIRCULAR_IZQ;
                         continue;
-                    /*case 0xff8594ba:
+                    case 0xff8594ba:
                         indexTiles[i] = Tiles.VENTANA_CIRCULAR_DER;
-                        continue;*/
+                        continue;
                     case 0xfff4a845:
                         indexTiles[i] = Tiles.BANDERA2_IZQ;
                         continue;
-                    /*case 0xfff3ac4e:
+                    case 0xfff3ac4e:
                         indexTiles[i] = Tiles.BANDERA2_DER;
-                        continue;*/
+                        continue;
                     case 0xff5e1616:
                         indexTiles[i] = Tiles.PICO_TORRE;
                         continue;
