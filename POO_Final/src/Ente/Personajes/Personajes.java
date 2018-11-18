@@ -53,10 +53,10 @@ public abstract class Personajes extends Ente{
        int posx=x+movex;
        int posy=y+movey;
        
-       int margenizq= -3;
-       int margender= 4;
-       int margenup= -10;
-       int margendown= 10;
+       int margenizq= -5;
+       int margender= 10;
+       int margenup= -18;
+       int margendown= 1;
        
        int bordeizq= (posx+margender)/Imagen.getLado();
        int bordeder= (posx+margender+margenizq)/Imagen.getLado();

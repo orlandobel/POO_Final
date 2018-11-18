@@ -30,8 +30,8 @@ public class Juego extends Canvas implements Runnable{
     
     private static final long serialVersionUID = 1L; //identificador
     
-    private static final int ANCHO = 800; //anco de ventana
-    private static final int ALTO = 600; //alto de ventana
+    private static final int ANCHO = 320; //anco de ventana
+    private static final int ALTO = 320; //alto de ventana
     private static final String NOMBRE = "Juego"; //nombre de ventana/juego
     private static String contFPS = "";
     private static String contAPS = "";
@@ -110,7 +110,7 @@ public class Juego extends Canvas implements Runnable{
         if(teclado.salir) {
             System.exit(0);
         }
-        p.setDiferencias(pepito.getX(), pepito.getY());
+        //p.setDiferencias(pepito.getX()-p.getAncho()/2-pepito.getImagen().getLado()/2, pepito.getY()-p.getAlto()/2-pepito.getImagen().getLado()/2);
         aps++;
     }
     
