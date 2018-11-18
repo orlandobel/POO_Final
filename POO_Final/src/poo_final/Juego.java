@@ -130,8 +130,6 @@ public class Juego extends Canvas implements Runnable{
             return;
         }
         
-        p.Limpiar();
-//        p.Mostrar(X,Y);
         mapa.Mostrar(X, Y, p);
         
         System.arraycopy(p.pixeles,0,this.pixeles,0,this.pixeles.length);//copia el rray de pixeles de la clase pantalla en el de esta clase para hacer el dibujado

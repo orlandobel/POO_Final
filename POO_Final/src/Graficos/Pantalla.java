@@ -22,50 +22,13 @@ public final class Pantalla {
     
     public final int[] pixeles;
     
-    /*Temporal*/
-//    private final static int LADOSPRITE = 32;
-//    private final static int MASCARASPRITE = LADOSPRITE - 1;
-    /*--------*/
-    
     public Pantalla(final int ancho, final int alto) {
         this.ancho = ancho;
         this.alto = alto;
         pixeles = new int[ancho*alto];
     }
     
-    public void Limpiar() {
-        for(int i=0;i<pixeles.length;i++) {
-            pixeles[i] = 0;
-        }
-    }
-    /*Temporal*/
-//    public void Mostrar(final int compX, final int compY) { //comp se refiere al movimiento del personaje en el eje
-//        for(int i=0;i<alto;i++) {
-//            int posY = i+compY; //coordenada en y
-//            
-//            /*Evita que nos salgamos de la pantalla en el eje y*/
-//            if(posY<0 || posY>=alto) {
-//                continue;
-//            }
-//            /*-------------------------------------------------*/
-//            
-//            for(int j=0;j<ancho;j++) {
-//                int posX = j+compX; //coordenada en y;
-//                
-//                /*Evita que nos salgamos de la pantalla en el eje x*/
-//                if(posX<0||posX>=ancho) {
-//                    continue;
-//                }
-//                /*-------------------------------------------------*/
-//                
-//                /*temporal*/
-//                pixeles[posX+posY*ancho] = Sprite.TIERRA.pixeles[(j & MASCARASPRITE) + (i & MASCARASPRITE) * LADOSPRITE];
-//                /*temporal*/
-//            }
-//        }
-//    }
-    /*--------*/
-    
+    /*Recorre los arreglos de pixeles de cada tile para dibujarlos en la pantalla*/
     public void MostrarTiles(int compX,int compY,Tiles t) {
         /*las compensaciones x,y representan el desplazamiento del personaje en el mapa*/
         compX-= difX;
@@ -86,6 +49,7 @@ public final class Pantalla {
            } 
         }
     }
+    /*---------------------------------------------------------------------------*/
     
     public int getAncho() {
         return this.ancho;
