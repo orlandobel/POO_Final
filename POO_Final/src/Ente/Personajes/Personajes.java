@@ -25,7 +25,7 @@ public abstract class Personajes extends Ente{
    public void mostrar (Pantalla pantalla){}
     
    public void Movimiento(int movex, int movey){
-       if( movex <0 ){ //derecha
+       /*if( movex <0 ){ //derecha
            direccion =1;
        }
        if( movex >0 ){ //izquierda
@@ -36,7 +36,7 @@ public abstract class Personajes extends Ente{
        }
        if( movey <0 ){ // abajo
            direccion =2;
-       }
+       }*/
        
        if(!isEliminado()){
            if(!Colisionado(movex,0)){
@@ -56,27 +56,39 @@ public abstract class Personajes extends Ente{
        int posy=y+movey;
        
        int margenizq= -5;
-       int margender= 10;
-       int margenup= -18;
-       int margendown= 1;
+       int margender= 5;
+       int margenup= -5;
+       int margendown= 5;
        
-       int bordeizq= (posx+margender)/Imagen.getLado();
+       int bordeizq= (int)((posx+6.2*margender)/Imagen.getLado());
        int bordeder= (posx+margender+margenizq)/Imagen.getLado();
        int bordeup= (posy+margendown)/Imagen.getLado();
-       int bordedown= (posx+margendown+margenup)/Imagen.getLado();
+       int bordedown= (posy+margendown+margenup)/Imagen.getLado();
        
+       System.out.println("x="+posx);
        
+       if(posx < 0||posx>mapa.getAncho()*Imagen.getLado()-Imagen.getLado()||posy<0||posy>mapa.getAlto()*Imagen.getLado()-Imagen.getLado()) {
+           colision = true;
+       }
+       try {
        if(mapa.getTiles(bordeizq+bordeup*mapa.getAncho()).isSolido()){
            colision=true;
+           System.out.println("1");
        }
        if(mapa.getTiles(bordeizq+bordedown*mapa.getAncho()).isSolido()){
            colision=true;
+           System.out.println("2");
        }
        if(mapa.getTiles(bordeder+bordeup*mapa.getAncho()).isSolido()){
            colision=true;
+           System.out.println("3");
        }
        if(mapa.getTiles(bordeder+bordedown*mapa.getAncho()).isSolido()){
            colision=true;
+           System.out.println("4");
+       }
+       }catch(Exception e) {
+           
        }
        
        return colision;

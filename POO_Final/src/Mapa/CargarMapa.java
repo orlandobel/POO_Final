@@ -63,103 +63,64 @@ public class CargarMapa extends Mapa{
                         continue;
                     case 0xff6d6262:
                         indexTiles[i] = Tiles.Invertir(Tiles.TORRE_SUP.s);
+                        indexTiles[i].setSolido(true);
                         continue;
                     case 0xff605c5c:
                         indexTiles[i] = Tiles.TORRE_MID;
                         continue;
                     case 0xff605656:
                         indexTiles[i] = Tiles.Invertir(Tiles.TORRE_MID.s);
+                        indexTiles[i].setSolido(true);
                         continue;
-<<<<<<< HEAD
-=======
-                    case 0xff605656:
-                        indexTiles[i] = Tiles.TORRE_MID_DER;
-                        continue;
->>>>>>> 37c6e9775d7413e191648357c94566964bf0077f
                     case 0xff636262:
                         indexTiles[i] = Tiles.TORRE_BASE;
                         continue;
                     case 0xff656060:
                         indexTiles[i] = Tiles.Invertir(Tiles.TORRE_BASE.s);
+                        indexTiles[i].setSolido(true);
                         continue;
-<<<<<<< HEAD
-=======
-                    case 0xff656060:
-                        indexTiles[i] = Tiles.TORRE_BASE_DER;
-                        continue;
->>>>>>> 37c6e9775d7413e191648357c94566964bf0077f
                     case 0xff2c2a2a:
                         indexTiles[i] = Tiles.TORRE_BACK;
                         continue;
                     case 0xff2d2828:
                         indexTiles[i] = Tiles.Invertir(Tiles.TORRE_BACK.s);
+                        indexTiles[i].setSolido(true);
                         continue;
-<<<<<<< HEAD
-=======
-                    case 0xff2d2828:
-                        indexTiles[i] = Tiles.TORRE_BACK_DER;
-                        continue;
->>>>>>> 37c6e9775d7413e191648357c94566964bf0077f
                     case 0xff726f6f:
                         indexTiles[i] = Tiles.PUENES_TORRES;
                         continue;
                     case 0xff726a6a:
                         indexTiles[i] = Tiles.Invertir(Tiles.PUENES_TORRES.s);
+                        indexTiles[i].setSolido(true);
                         continue;
-<<<<<<< HEAD
-=======
-                    case 0xff726a6a:
-                        indexTiles[i] = Tiles.PUENES_TORRES_DER;
-                        continue;
->>>>>>> 37c6e9775d7413e191648357c94566964bf0077f
                     case 0xfff49316:
                         indexTiles[i] = Tiles.BANDERA1;
                         continue;
                     case 0xfff3951b:
                         indexTiles[i] = Tiles.Invertir(Tiles.BANDERA1.s);
+                        indexTiles[i].setSolido(true);
                         continue;
-<<<<<<< HEAD
-=======
-                    case 0xfff3951b:
-                        indexTiles[i] = Tiles.BANDERA1_DER;
-                        continue;
->>>>>>> 37c6e9775d7413e191648357c94566964bf0077f
                     case 0xff746d6d:
                         indexTiles[i] = Tiles.SUPERIOR_VENTANA;
                         continue;
                     case 0xff746868:
                         indexTiles[i] = Tiles.Invertir(Tiles.SUPERIOR_VENTANA.s);
+                        indexTiles[i].setSolido(true);
                         continue;
-<<<<<<< HEAD
-=======
-                    case 0xff746868:
-                        indexTiles[i] = Tiles.SUPERIOR_VENTANA_DER;
-                        continue;
->>>>>>> 37c6e9775d7413e191648357c94566964bf0077f
                     case 0xff8b97b8:
                         indexTiles[i] = Tiles.VENTANA_CIRCULAR;
                         continue;
                     case 0xff8594ba:
                         indexTiles[i] = Tiles.Invertir(Tiles.VENTANA_CIRCULAR.s);
+                        indexTiles[i].setSolido(true);
                         continue;
-<<<<<<< HEAD
-=======
-                    case 0xff8594ba:
-                        indexTiles[i] = Tiles.VENTANA_CIRCULAR_DER;
-                        continue;
->>>>>>> 37c6e9775d7413e191648357c94566964bf0077f
                     case 0xfff4a845:
                         indexTiles[i] = Tiles.BANDERA2;
                         continue;
                     case 0xfff3ac4e:
                         indexTiles[i] = Tiles.Invertir(Tiles.BANDERA2.s);
+                        indexTiles[i].setSolido(true);
                         continue;
-<<<<<<< HEAD
-=======
-                    case 0xfff3ac4e:
-                        indexTiles[i] = Tiles.BANDERA2_DER;
-                        continue;
->>>>>>> 37c6e9775d7413e191648357c94566964bf0077f
                     case 0xff5e1616:
                         indexTiles[i] = Tiles.PICO_TORRE;
                         continue;
