@@ -56,8 +56,8 @@ public abstract class Personajes extends Ente{
        int posy=y+movey;
        
        int margenizq= -5;
-       int margender= 5;
-       int margenup= -5;
+       int margender=  5;
+       int margenup=  -5;
        int margendown= 5;
        
        int bordeizq= (int)((posx+6.2*margender)/Imagen.getLado());
@@ -65,7 +65,7 @@ public abstract class Personajes extends Ente{
        int bordeup= (posy+margendown)/Imagen.getLado();
        int bordedown= (posy+margendown+margenup)/Imagen.getLado();
        
-       System.out.println("x="+posx);
+       //System.out.println("x="+posx);
        
        if(posx < 0||posx>mapa.getAncho()*Imagen.getLado()-Imagen.getLado()||posy<0||posy>mapa.getAlto()*Imagen.getLado()-Imagen.getLado()) {
            colision = true;
@@ -73,19 +73,19 @@ public abstract class Personajes extends Ente{
        try {
        if(mapa.getTiles(bordeizq+bordeup*mapa.getAncho()).isSolido()){
            colision=true;
-           System.out.println("1");
+           //System.out.println("1");
        }
        if(mapa.getTiles(bordeizq+bordedown*mapa.getAncho()).isSolido()){
            colision=true;
-           System.out.println("2");
+           //System.out.println("2");
        }
        if(mapa.getTiles(bordeder+bordeup*mapa.getAncho()).isSolido()){
            colision=true;
-           System.out.println("3");
+           //System.out.println("3");
        }
        if(mapa.getTiles(bordeder+bordedown*mapa.getAncho()).isSolido()){
            colision=true;
-           System.out.println("4");
+           //System.out.println("4");
        }
        }catch(Exception e) {
            

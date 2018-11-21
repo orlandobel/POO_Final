@@ -30,8 +30,8 @@ public class Juego extends Canvas implements Runnable{
     
     private static final long serialVersionUID = 1L; //identificador
     
-    private static final int ANCHO = 320; //anco de ventana
-    private static final int ALTO = 320; //alto de ventana
+    private static final int ANCHO = 820; //anco de ventana
+    private static final int ALTO = 820; //alto de ventana
     private static final String NOMBRE = "Juego"; //nombre de ventana/juego
     private static String contFPS = "";
     private static String contAPS = "";
@@ -76,7 +76,7 @@ public class Juego extends Canvas implements Runnable{
         ventana.setResizable(false);
         ventana.setLayout(new BorderLayout());
         ventana.add(this, BorderLayout.CENTER);
-        //ventana.setUndecorated(true);
+        ventana.setUndecorated(true);
         ventana.pack();
         ventana.setLocationRelativeTo(null); //esptablece la ventana en el centro por defecto
         ventana.setVisible(true);
