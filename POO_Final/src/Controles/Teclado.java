@@ -22,6 +22,7 @@ public final class Teclado implements KeyListener{
     public boolean izquierda;
     public boolean derecha;
     public boolean salir;
+    public boolean menu;
     
     /*------Controles de movimiento------*/
     public void acualizar() {
@@ -31,6 +32,7 @@ public final class Teclado implements KeyListener{
         izquierda = teclas[KeyEvent.VK_A];
         derecha = teclas[KeyEvent.VK_D];
         salir = teclas[KeyEvent.VK_ESCAPE];
+        menu = teclas[KeyEvent.VK_ENTER];
     }
     /*-----------------------------------*/
     
@@ -46,7 +48,7 @@ public final class Teclado implements KeyListener{
     
     @Override
     public void keyTyped(KeyEvent e) {
-        
+        teclas[e.getKeyCode()] = false;
     }
-
 }
+

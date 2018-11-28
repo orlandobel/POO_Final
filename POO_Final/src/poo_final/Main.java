@@ -20,13 +20,15 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
  *
  * @author Orlando
  */
-public class Juego extends Canvas implements Runnable{
+public class Main extends Canvas implements Runnable{
     
     private static final long serialVersionUID = 1L; //identificador
     
@@ -53,17 +55,19 @@ public class Juego extends Canvas implements Runnable{
     /*----------------------------------------------*/
             
     private static JFrame ventana;
+    private static Menu mn;
     private static Thread thread; //hilo principal
     private static Teclado teclado;
     
     private static volatile boolean Ejecucion = false; //variable de inizializacion/finalizacion del bucle principal
     
-    private Juego() {
+    private Main() {
         init();
     }
     
     private void init() {
         setPreferredSize(new Dimension(ANCHO,ALTO));
+        mn = new Menu();;
         teclado = new Teclado();
         addKeyListener(teclado);
         
@@ -110,6 +114,14 @@ public class Juego extends Canvas implements Runnable{
         if(teclado.salir) {
             System.exit(0);
         }
+        if(teclado.menu) {
+            try {
+                thread.sleep(100);
+                mn.setVisible(true);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+        }
         //p.setDiferencias(pepito.getX()-p.getAncho()/2-pepito.getImagen().getLado()/2, pepito.getY()-p.getAlto()/2-pepito.getImagen().getLado()/2);
         aps++;
     }
@@ -138,7 +150,6 @@ public class Juego extends Canvas implements Runnable{
         g.dispose();
         
         estrategia.show();
-        
         fps++;
     }
     
@@ -186,7 +197,7 @@ public class Juego extends Canvas implements Runnable{
     /*------------------------------------------------------------------*/
     
     public static void main(String args[]) {
-        Juego j = new Juego();
+        Main j = new Main();
        
         j.Iniciar();
         
