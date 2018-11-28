@@ -5,7 +5,8 @@
  */
 package Graficos;
 
-import Ente.Personajes.Principal;
+import Ente.Personajes.Personajes;
+
 import Mapa.Tiles.Tiles;
 
 /**
@@ -52,7 +53,7 @@ public final class Pantalla {
     }
     /*---------------------------------------------------------------------------*/
     
-    public void MostrarJugador(int compX, int compY, Principal pepito){
+    public void MostrarJugador(int compX, int compY, Personajes pepito){
         compX-= difX;
         compY-= difY;
         

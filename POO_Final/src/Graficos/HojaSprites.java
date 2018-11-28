@@ -21,7 +21,7 @@ public class HojaSprites {
     
     /*Coleccion de hojas de sprites*/
     public static HojaSprites Hoja1 = new HojaSprites("/Texturas/HojaMapeado.png",640,512);
-    public static HojaSprites personajePrueba= new HojaSprites("/Texturas/personaje.png",32,32);
+    public static HojaSprites personajePrueba= new HojaSprites("/Texturas/RPGCharacterSprites32x32.png",384,672);
     /*Coleccion de hojas de sprites*/
     
     public HojaSprites(final String ruta, final int ancho, final int alto) {

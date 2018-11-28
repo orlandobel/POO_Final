@@ -12,12 +12,23 @@ import Graficos.Sprite;
  * @author Guillermo BG
  */
 public abstract class Personajes extends Ente{
-   protected Sprite Imagen; 
+   protected Sprite Imagen;
+   protected int bordeizq;
+   protected int bordeder;
+   protected int bordeup;
+   protected int bordedown;
+   
+   protected int margenizq  = -5;
+   protected int margender  =  5;
+   protected int margenup   = -5;
+   protected int margendown =  5;
+   
    protected int direccion= 2;
    //0 mira hacia arriba
    //1 mira hacia derecha 
    //2 mira hacia abajo
    //3 mira hacia izquierda
+    
    
    @Override
    public void actualizar(){}
@@ -49,21 +60,17 @@ public abstract class Personajes extends Ente{
     
    }
    
-   private boolean Colisionado(int movex, int movey){
-       boolean colision=false;
+   protected boolean Colisionado(int movex, int movey){
+      this.colision=false;
        
        int posx=x+movex;
        int posy=y+movey;
+      
        
-       int margenizq= -5;
-       int margender=  5;
-       int margenup=  -5;
-       int margendown= 5;
-       
-       int bordeizq= (int)((posx+6.2*margender)/Imagen.getLado());
-       int bordeder= (posx+margender+margenizq)/Imagen.getLado();
-       int bordeup= (posy+margendown)/Imagen.getLado();
-       int bordedown= (posy+margendown+margenup)/Imagen.getLado();
+       this.bordeizq= (int)((posx+6.2*this.margender)/Imagen.getLado());
+       this.bordeder= (posx+this.margender+this.margenizq)/Imagen.getLado();
+       this.bordeup= (posy+this.margendown)/Imagen.getLado();
+       this.bordedown= (posy+this.margendown+this.margenup)/Imagen.getLado();
        
        //System.out.println("x="+posx);
        
@@ -87,6 +94,8 @@ public abstract class Personajes extends Ente{
            colision=true;
            //System.out.println("4");
        }
+       
+       
        }catch(Exception e) {
            
        }

@@ -5,9 +5,6 @@
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
       <Color id="Cursor Por defecto"/>
     </Property>
-    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[820, 820]"/>
-    </Property>
     <Property name="undecorated" type="boolean" value="true"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
@@ -30,12 +27,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" pref="295" max="32767" attributes="0"/>
+          <Component id="jPanel1" min="-2" pref="299" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" pref="348" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" pref="272" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -50,26 +47,36 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="Salir" min="-2" pref="279" max="-2" attributes="0"/>
-                      <Component id="Guardar" min="-2" pref="279" max="-2" attributes="0"/>
-                      <Component id="Regresar" min="-2" pref="279" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="stopmusic" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="playmusic" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="Guardar" alignment="1" min="-2" pref="279" max="-2" attributes="0"/>
+                      <Component id="Salir" alignment="1" min="-2" pref="279" max="-2" attributes="0"/>
+                      <Component id="Regresar" alignment="1" min="-2" pref="279" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="10" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Regresar" min="-2" pref="104" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <Component id="Regresar" min="-2" pref="54" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="Guardar" min="-2" pref="104" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="playmusic" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
+                      <Component id="stopmusic" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="Salir" min="-2" pref="104" max="-2" attributes="0"/>
+                  <Component id="Guardar" min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="Salir" min="-2" pref="34" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -92,6 +99,9 @@
             <Property name="alignmentX" type="float" value="410.0"/>
             <Property name="alignmentY" type="float" value="410.0"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GuardarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Salir">
           <Properties>
@@ -101,6 +111,26 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SalirActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="stopmusic">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Detener musica"/>
+            <Property name="alignmentX" type="float" value="410.0"/>
+            <Property name="alignmentY" type="float" value="410.0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stopmusicActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="playmusic">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Escuchar musica"/>
+            <Property name="alignmentX" type="float" value="410.0"/>
+            <Property name="alignmentY" type="float" value="410.0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="playmusicActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -19,8 +19,10 @@ public final class Sprite {
     private final HojaSprites hoja;
     
     //Sprite del jugadorPrueba
-    public static Sprite JUGADOR_PRUEBA = new Sprite(32,0,0,HojaSprites.personajePrueba);
-    //
+    public static Sprite JUGADOR_PRUEBA = new Sprite(32,3,3,HojaSprites.personajePrueba);
+    public static Sprite SEC_PRUEBA = new Sprite(32,3,4,HojaSprites.personajePrueba);
+    public static Sprite TER_PRUEBA = new Sprite(32,3,8,HojaSprites.personajePrueba);
+//
     
     /*Arreglo de sprites*/
     public static Sprite VACIO = new Sprite(32,19,0,HojaSprites.Hoja1);

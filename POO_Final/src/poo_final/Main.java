@@ -6,7 +6,7 @@
 package poo_final;
 
 import Controles.Teclado;
-import Ente.Personajes.Principal;
+import Ente.Personajes.*;
 import Graficos.Pantalla;
 import Graficos.Sprite;
 import Mapa.CargarMapa;
@@ -20,8 +20,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -48,6 +46,8 @@ public class Main extends Canvas implements Runnable{
     private static Mapa mapa;
     
     private Principal pepito;
+    private Secundarios A;
+    private Secundarios B;
     
     /*Variables de manipulacion de pixeles del juego*/
     private static BufferedImage imagen = new BufferedImage(ANCHO,ALTO,BufferedImage.TYPE_INT_RGB); //crea una imagen en el buffer
@@ -73,7 +73,10 @@ public class Main extends Canvas implements Runnable{
         
         p = new Pantalla(ANCHO,ALTO);
         mapa = new CargarMapa("/GeneradorNiveles/MapaCastillo.png");
-        pepito = new Principal(teclado, 224, 224, Sprite.JUGADOR_PRUEBA, mapa);
+        A= new Secundarios(100, 128, Sprite.SEC_PRUEBA, mapa);
+        B= new Secundarios(300, 300, Sprite.TER_PRUEBA, mapa);
+        Secundarios matriz[]= {A,B};
+        pepito = new Principal(teclado, 224, 224, Sprite.JUGADOR_PRUEBA, mapa, matriz);
         
         ventana = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -139,6 +142,8 @@ public class Main extends Canvas implements Runnable{
         mapa.Mostrar(pepito.getX()-p.getAncho()/2-pepito.getImagen().getLado()/2, 
                 pepito.getY()-p.getAlto()/2-pepito.getImagen().getLado()/2, p);
         pepito.mostrar(p);
+        A.mostrar(p);
+        B.mostrar(p);
         System.arraycopy(p.pixeles,0,this.pixeles,0,this.pixeles.length);//copia el rray de pixeles de la clase pantalla en el de esta clase para hacer el dibujado
         
         Graphics g = estrategia.getDrawGraphics(); //obtiene los graficos a dibujar
