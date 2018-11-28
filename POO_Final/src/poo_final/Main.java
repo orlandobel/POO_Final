@@ -73,8 +73,8 @@ public class Main extends Canvas implements Runnable{
         
         p = new Pantalla(ANCHO,ALTO);
         mapa = new CargarMapa("/GeneradorNiveles/MapaCastillo.png");
-        A= new Secundarios(100, 128, Sprite.SEC_PRUEBA, mapa);
-        B= new Secundarios(300, 300, Sprite.TER_PRUEBA, mapa);
+        A= new Secundarios(96, 128, Sprite.SEC_PRUEBA, mapa);
+        B= new Secundarios(416, 288, Sprite.TER_PRUEBA, mapa);
         Secundarios matriz[]= {A,B};
         pepito = new Principal(teclado, 224, 224, Sprite.JUGADOR_PRUEBA, mapa, matriz);
         

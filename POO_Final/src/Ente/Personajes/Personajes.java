@@ -69,8 +69,8 @@ public abstract class Personajes extends Ente{
        
        this.bordeizq= (int)((posx+6.2*this.margender)/Imagen.getLado());
        this.bordeder= (posx+this.margender+this.margenizq)/Imagen.getLado();
-       this.bordeup= (posy+this.margendown)/Imagen.getLado();
-       this.bordedown= (posy+this.margendown+this.margenup)/Imagen.getLado();
+       this.bordeup= (posy-5+this.margendown)/Imagen.getLado();
+       this.bordedown= (int)(posy+5*this.margendown+this.margenup)/Imagen.getLado();
        
        //System.out.println("x="+posx);
        

@@ -61,26 +61,24 @@ public class Principal extends Personajes {
     @Override
     protected boolean Colisionado(int movex, int movey){
       super.Colisionado(movex, movey);
-      try {
        for(int i=0; i<this.personajes.length; i++){
-           for(int j=0;j<this.personajes.length;j++) {
-            if(personajes[i+j].bordeizq == this.bordeder){
+            if(personajes[i].bordeder+personajes[i].bordeup*mapa.getAncho()== bordeizq+bordedown*mapa.getAncho()){
                 this.colision=true;
+                System.out.println("hit1");
             }
-            if(personajes[i+j].bordeder == this.bordeizq){
+            if(personajes[i].bordeizq+personajes[i].bordeup*mapa.getAncho()== bordeder+bordedown*mapa.getAncho()){
                 this.colision=true;
+                System.out.println("hit2");
             }
-            if(personajes[i+j].bordeup == this.bordedown){
+            if(personajes[i].bordeder+personajes[i].bordedown*mapa.getAncho()== bordeizq+bordeup*mapa.getAncho()){
                 this.colision=true;
+                System.out.println("hit3");
             }
-            if(personajes[i+j].bordedown == this.bordeup){
+            if(personajes[i].bordeizq+personajes[i].bordedown*mapa.getAncho()== bordeder+bordeup*mapa.getAncho()){
                 this.colision=true;
+                System.out.println("hit4s");
             }
-           }
        }
-      } catch(Exception e) {
-          
-      }
        return colision;
    }
 }

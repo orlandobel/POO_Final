@@ -20,10 +20,10 @@ public class Secundarios extends Personajes{
         this.x=x;
         this.y=y;
         this.mapa=mapa;
-        this.bordeizq  = (int)((x+6.2*this.margender)/Imagen.getLado());
-        this.bordeder  = (x+this.margender+this.margenizq)/Imagen.getLado();
-        this.bordeup   = (y+this.margendown)/Imagen.getLado();
-        this.bordedown = (y+this.margendown+this.margenup)/Imagen.getLado();
+        this.bordeizq  = (x)/Imagen.getLado();
+        this.bordeder  = (x)/Imagen.getLado();
+        this.bordeup   = (y)/Imagen.getLado();
+        this.bordedown = (y)/Imagen.getLado();
        
         this.colision=true;
     }
