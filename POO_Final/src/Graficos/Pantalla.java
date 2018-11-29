@@ -68,7 +68,10 @@ public final class Pantalla {
                     posX = 0;
                 }
                
-               pixeles[posX+posY*ancho] = pepito.getImagen().pixeles[j+i*pepito.getImagen().getLado()];
+                int color = pepito.getImagen().pixeles[j+i*pepito.getImagen().getLado()];
+                if(color!=0xffff00ff){
+                    pixeles[posX+posY*ancho] = color;
+                }
            } 
         }
     }

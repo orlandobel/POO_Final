@@ -21,8 +21,24 @@ public final class Sprite {
     //Sprite del jugadorPrueba
     
     public static Sprite SEC_PRUEBA = new Sprite(32,3,4,HojaSprites.personajePrueba);
-    public static Sprite TER_PRUEBA = new Sprite(32,3,8,HojaSprites.personajePrueba);
-    public static Sprite JUGADOR_PRUEBA = new Sprite(32,3,3,HojaSprites.personajePrueba);
+    public static Sprite TER_PRUEBA = new Sprite(32,9,8,HojaSprites.personajePrueba);
+    
+    
+    public static Sprite JUGADOR_PRUEBA_ABAJO = new Sprite(32,3,3,HojaSprites.personajePrueba);
+    
+    public static Sprite JUGADOR_ABAJO1 = new Sprite(32,0,3,HojaSprites.personajePrueba);
+    public static Sprite JUGADOR_ABAJO2 = new Sprite(32,1,3,HojaSprites.personajePrueba);
+    public static Sprite JUGADOR_ABAJO3 = new Sprite(32,2,3,HojaSprites.personajePrueba);
+      
+    public static Sprite JUGADOR_PRUEBA_ARRIBA = new Sprite(32,7,3,HojaSprites.personajePrueba);
+    
+    public static Sprite JUGADOR_ARRIBA1 = new Sprite(32,4,3,HojaSprites.personajePrueba);
+    public static Sprite JUGADOR_ARRIBA2 = new Sprite(32,5,3,HojaSprites.personajePrueba);
+    public static Sprite JUGADOR_ARRIBA3 = new Sprite(32,6,3,HojaSprites.personajePrueba);
+    
+    public static Sprite JUGADOR_PRUEBA_LADO = new Sprite(32,9,3,HojaSprites.personajePrueba);
+    public static Sprite JUGADOR_LADO1 = new Sprite(32, 8,3,HojaSprites.personajePrueba);
+    public static Sprite JUGADOR_LADO2 = new Sprite(32,10,3,HojaSprites.personajePrueba);
 //
     
     /*Arreglo de sprites*/
@@ -94,5 +110,9 @@ public final class Sprite {
 
     public HojaSprites getHoja() {
         return hoja;
+    }
+    public static Sprite Invertir(Sprite s) {
+        Sprite tAux = new Sprite(s.getLado(),s.getX(),s.getY(),s);
+        return tAux;
     }
 }

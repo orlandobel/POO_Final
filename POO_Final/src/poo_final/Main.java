@@ -20,6 +20,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 
 /**
@@ -48,6 +49,9 @@ public class Main extends Canvas implements Runnable{
     private Principal pepito;
     private Secundarios A;
     private Secundarios B;
+    private ArrayList <Secundarios> C;
+    
+    private boolean hablando;
     
     /*Variables de manipulacion de pixeles del juego*/
     private static BufferedImage imagen = new BufferedImage(ANCHO,ALTO,BufferedImage.TYPE_INT_RGB); //crea una imagen en el buffer
@@ -58,7 +62,6 @@ public class Main extends Canvas implements Runnable{
     private static Menu mn;
     private static Thread thread; //hilo principal
     private static Teclado teclado;
-    
     private static volatile boolean Ejecucion = false; //variable de inizializacion/finalizacion del bucle principal
     
     private Main() {
@@ -73,10 +76,12 @@ public class Main extends Canvas implements Runnable{
         
         p = new Pantalla(ANCHO,ALTO);
         mapa = new CargarMapa("/GeneradorNiveles/MapaCastillo.png");
-        A= new Secundarios(96, 128, Sprite.SEC_PRUEBA, mapa);
-        B= new Secundarios(416, 288, Sprite.TER_PRUEBA, mapa);
-        Secundarios matriz[]= {A,B};
-        pepito = new Principal(teclado, 224, 224, Sprite.JUGADOR_PRUEBA, mapa, matriz);
+        A= new Secundarios(96, 128, Sprite.SEC_PRUEBA, mapa, "Hola");
+        B= new Secundarios(416, 288, Sprite.TER_PRUEBA, mapa, "adios");
+        C=new ArrayList();
+        C.add(A);
+        C.add(B);
+        pepito = new Principal(teclado, 224, 224, Sprite.JUGADOR_PRUEBA_ABAJO, mapa, C);
         
         ventana = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -125,6 +130,14 @@ public class Main extends Canvas implements Runnable{
                 ex.printStackTrace();
             }
         }
+        
+        if(hablando){
+            try {
+                thread.sleep(200);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+        }
         //p.setDiferencias(pepito.getX()-p.getAncho()/2-pepito.getImagen().getLado()/2, pepito.getY()-p.getAlto()/2-pepito.getImagen().getLado()/2);
         aps++;
     }
@@ -152,6 +165,15 @@ public class Main extends Canvas implements Runnable{
         g.drawString(contAPS, 10, 20);
         g.drawString(contFPS, 10, 35);
         g.drawString("Pepito: ("+pepito.getX()+", "+pepito.getY()+")", 10, 50);
+        if(pepito.isColision() && teclado.accion && pepito.getSecundario()!=-1){
+            
+            g.setColor(Color.white);
+            g.drawString(C.get(pepito.getSecundario()).Hablar(),200,600);
+            this.hablando=true;
+            
+        }else{
+            this.hablando=false;
+        }
         g.dispose();
         
         estrategia.show();

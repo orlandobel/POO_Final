@@ -23,6 +23,8 @@ public final class Teclado implements KeyListener{
     public boolean derecha;
     public boolean salir;
     public boolean menu;
+    public boolean accion;
+    public boolean correr;
     
     /*------Controles de movimiento------*/
     public void acualizar() {
@@ -33,6 +35,8 @@ public final class Teclado implements KeyListener{
         derecha = teclas[KeyEvent.VK_D];
         salir = teclas[KeyEvent.VK_ESCAPE];
         menu = teclas[KeyEvent.VK_ENTER];
+        accion=teclas[KeyEvent.VK_K];
+        correr= teclas[KeyEvent.VK_SHIFT];
     }
     /*-----------------------------------*/
     

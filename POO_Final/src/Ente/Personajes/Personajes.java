@@ -36,18 +36,18 @@ public abstract class Personajes extends Ente{
    public void mostrar (Pantalla pantalla){}
     
    public void Movimiento(int movex, int movey){
-       /*if( movex <0 ){ //derecha
-           direccion =1;
+       if( movex > 0 ){ //derecha
+           direccion = 1;
        }
-       if( movex >0 ){ //izquierda
-           direccion =3;
+       if( movex < 0 ){ //izquierda
+           direccion = 3;
        }
-       if( movey <0 ){ // arriba
-           direccion =0;
+       if( movey > 0 ){ // arriba
+           direccion = 0;
        }
-       if( movey <0 ){ // abajo
-           direccion =2;
-       }*/
+       if( movey < 0 ){ // abajo
+           direccion = 2;
+       }
        
        if(!isEliminado()){
            if(!Colisionado(movex,0)){
@@ -66,8 +66,8 @@ public abstract class Personajes extends Ente{
        int posx=x+movex;
        int posy=y+movey;
       
-       
-       this.bordeizq= (int)((posx+6.2*this.margender)/Imagen.getLado());
+       //bordes de las colisiones
+       this.bordeizq= (int)((posx+4*this.margender)/Imagen.getLado());
        this.bordeder= (posx+this.margender+this.margenizq)/Imagen.getLado();
        this.bordeup= (posy-5+this.margendown)/Imagen.getLado();
        this.bordedown= (int)(posy+5*this.margendown+this.margenup)/Imagen.getLado();
