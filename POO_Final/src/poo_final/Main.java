@@ -99,6 +99,7 @@ public class Main extends Canvas implements Runnable, Serializable{
         ventana.setVisible(true);
         
     }
+    
     public void posicinarJugador(int i, int j){
         init(i,j);
     }
@@ -124,11 +125,15 @@ public class Main extends Canvas implements Runnable, Serializable{
     }
     
     /*--------Inizializa el hilo y su ciclo--------*/
-    public synchronized void Iniciar() {
+    private synchronized void Iniciar() {
         this.Ejecucion = true;
         this.thread = new Thread(this, "Graficos"); //crea un nuevo hilo llamado graficos
         thread.start();
         Sonido.BACK.loop();
+    }
+    
+    public synchronized void Empezar(){
+        this.Iniciar();
     }
     /*---------------------------------------------*/
 
@@ -138,13 +143,16 @@ public class Main extends Canvas implements Runnable, Serializable{
     }
     
     /*----------Detiene el juego----------*/
-    public synchronized void Detener() {
+    private synchronized void Detener() {
         try {
             this.Ejecucion = false;
             this.thread.join(); //detiene el hilo despues de que termine el ciclo actual
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+    public synchronized void Finalizar(){
+        this.Detener();
     }
     /*------------------------------------*/
     
@@ -177,7 +185,7 @@ public class Main extends Canvas implements Runnable, Serializable{
     }
     
     /*Muestra el contenido en la ventana*/
-    public void Mostrar() {
+    private void Mostrar() {
         BufferStrategy estrategia = getBufferStrategy();
         if(estrategia==null) {
             createBufferStrategy(3);
