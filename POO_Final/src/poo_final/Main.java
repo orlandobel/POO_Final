@@ -127,7 +127,7 @@ public class Main extends Canvas implements Runnable, Serializable{
     }
     
     /*----------Detiene el juego----------*/
-    private synchronized void Detener() {
+    public synchronized void Detener() {
         try {
             this.Ejecucion = false;
             this.thread.join(); //detiene el hilo despues de que termine el ciclo actual

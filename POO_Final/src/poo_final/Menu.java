@@ -209,7 +209,7 @@ public class Menu extends javax.swing.JFrame {
         }
         if(aux){              
             try{
-                System.out.println(Juego);
+                
                 oos.writeObject(this.Juego);
                 
                 System.out.println("Guardado exitoso");
@@ -237,41 +237,42 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_playmusicActionPerformed
 
     private void ReadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReadGameActionPerformed
-        this.Juego.thread.stop();
-        this.LeerPartida();
-        this.Juego.thread.start();
+        this.Juego.Detener();
+        
+       this.LeerPartida().Iniciar();
+        
         
     }//GEN-LAST:event_ReadGameActionPerformed
 
     private Main LeerPartida(){   
         try {
             fis = new FileInputStream("Save.wop");
-            System.out.println(Juego.toString()+" "+1);
+            
         } catch (FileNotFoundException ex) {
-            System.out.println(Juego.toString()+" Fallo: "+1);
+            
             ex.printStackTrace();
         }
         try {
             ois = new ObjectInputStream(fis);
-             System.out.println(Juego.toString()+" "+2);
+             
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
-            System.out.println(Juego.toString()+" Fallo: "+2.1);
+            
         } catch (IOException ex) {
             ex.printStackTrace();
-            System.out.println(Juego.toString()+" Fallo: "+2.2);
+           
         }
         
         try {
-           System.out.println(Juego.toString());
-           Juego = (Main) ois.readObject();
-           System.out.println(Juego.toString());
+          
+           PartidaLeida = (Main) ois.readObject();
+          
         } catch (IOException ex) {
            ex.printStackTrace();
-           System.out.println(Juego.toString()+" Fallo: "+3);
+           
         } catch (ClassNotFoundException ex) {
            ex.printStackTrace();
-           System.out.println(Juego.toString()+" Fallo: "+3.1);
+           
         } finally{
             if (ois != null){
                 try {
@@ -279,7 +280,7 @@ public class Menu extends javax.swing.JFrame {
                     fis.close();
                 } catch (IOException ex) {
                     ex.printStackTrace();
-                    System.out.println(Juego.toString()+" Fallo: "+4);
+                   
                 }
             
             }
