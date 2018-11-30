@@ -237,9 +237,12 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_playmusicActionPerformed
 
     private void ReadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReadGameActionPerformed
-        this.Juego.Detener();
-        
-       this.LeerPartida().Iniciar();
+       this.Juego.Detener();
+       this.Juego.getVentana().dispose();
+       this.dispose();
+       this.PartidaLeida=this.LeerPartida();
+       this.PartidaLeida.init(this.PartidaLeida.getPepitoX(), this.PartidaLeida.getPepitoY());
+       this.PartidaLeida.Iniciar();
         
         
     }//GEN-LAST:event_ReadGameActionPerformed

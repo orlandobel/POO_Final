@@ -71,7 +71,7 @@ public class Main extends Canvas implements Runnable, Serializable{
         init(i, j);
     }
     
-    private void init(int i, int j) {
+    public void init(int i, int j) {
         setPreferredSize(new Dimension(ANCHO,ALTO));
         mn = new Menu();
         teclado = new Teclado();
@@ -106,6 +106,14 @@ public class Main extends Canvas implements Runnable, Serializable{
 
     public void ActualizarPepitoY() {
         this.pepitoY = pepito.getY();
+    }
+
+    public int getPepitoX() {
+        return pepitoX;
+    }
+
+    public int getPepitoY() {
+        return pepitoY;
     }
 
     public JFrame getVentana() {
