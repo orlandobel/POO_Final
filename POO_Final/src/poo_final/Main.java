@@ -20,6 +20,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 
@@ -27,7 +28,7 @@ import javax.swing.JFrame;
  *
  * @author Orlando
  */
-public class Main extends Canvas implements Runnable{
+public class Main extends Canvas implements Runnable, Serializable{
     
     private static final long serialVersionUID = 1L; //identificador
     
@@ -47,6 +48,8 @@ public class Main extends Canvas implements Runnable{
     private static Mapa mapa;
     
     private Principal pepito;
+    private int pepitoX;
+    private int pepitoY;
     private Secundarios A;
     private Secundarios B;
     private ArrayList <Secundarios> C;
@@ -60,17 +63,17 @@ public class Main extends Canvas implements Runnable{
             
     private static JFrame ventana;
     private static Menu mn;
-    private static Thread thread; //hilo principal
+    static Thread thread; //hilo principal
     private static Teclado teclado;
     private static volatile boolean Ejecucion = false; //variable de inizializacion/finalizacion del bucle principal
     
-    private Main() {
-        init();
+    Main(int i, int j) {
+        init(i, j);
     }
     
-    private void init() {
+    private void init(int i, int j) {
         setPreferredSize(new Dimension(ANCHO,ALTO));
-        mn = new Menu();;
+        mn = new Menu();
         teclado = new Teclado();
         addKeyListener(teclado);
         
@@ -81,7 +84,9 @@ public class Main extends Canvas implements Runnable{
         C=new ArrayList();
         C.add(A);
         C.add(B);
-        pepito = new Principal(teclado, 224, 224, Sprite.JUGADOR_PRUEBA_ABAJO, mapa, C);
+        pepitoX=i;
+        pepitoY=j;
+        pepito = new Principal(teclado, pepitoX, pepitoY, Sprite.JUGADOR_PRUEBA_ABAJO, mapa, C);
         
         ventana = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -94,9 +99,21 @@ public class Main extends Canvas implements Runnable{
         ventana.setVisible(true);
         
     }
+
+    public void ActualizarPepitoX() {
+        this.pepitoX = pepito.getX();
+    }
+
+    public void ActualizarPepitoY() {
+        this.pepitoY = pepito.getY();
+    }
+
+    public JFrame getVentana() {
+        return ventana;
+    }
     
     /*--------Inizializa el hilo y su ciclo--------*/
-    private synchronized void Iniciar() {
+    public synchronized void Iniciar() {
         this.Ejecucion = true;
         this.thread = new Thread(this, "Graficos"); //crea un nuevo hilo llamado graficos
         thread.start();
@@ -123,17 +140,18 @@ public class Main extends Canvas implements Runnable{
             System.exit(0);
         }
         if(teclado.menu) {
-            try {
+            try{
                 thread.sleep(100);
+                mn.setJuego(this);
                 mn.setVisible(true);
-            } catch (InterruptedException ex) {
+            } catch(InterruptedException ex){
                 ex.printStackTrace();
             }
         }
         
         if(hablando){
             try {
-                thread.sleep(200);
+                thread.sleep(100);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
@@ -165,10 +183,10 @@ public class Main extends Canvas implements Runnable{
         g.drawString(contAPS, 10, 20);
         g.drawString(contFPS, 10, 35);
         g.drawString("Pepito: ("+pepito.getX()+", "+pepito.getY()+")", 10, 50);
-        if(pepito.isColision() && teclado.accion && pepito.getSecundario()!=-1){
+        if(teclado.accion && pepito.getSecundario()!=-1){
             
             g.setColor(Color.white);
-            g.drawString(C.get(pepito.getSecundario()).Hablar(),200,600);
+            g.drawString(pepito.Platica(),200,600);
             this.hablando=true;
             
         }else{
@@ -224,7 +242,7 @@ public class Main extends Canvas implements Runnable{
     /*------------------------------------------------------------------*/
     
     public static void main(String args[]) {
-        Main j = new Main();
+        Main j = new Main(224,224);
        
         j.Iniciar();
         

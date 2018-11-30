@@ -134,47 +134,54 @@ public class Principal extends Personajes {
         pantalla.MostrarJugador(x, y, this);
     };
     
+    public String Platica(){
+        return this.personajes.get(this.secundario).Hablar();
+    };
     
     @Override
     protected boolean Colisionado(int movex, int movey){
       super.Colisionado(movex, movey);
       boolean colisionNPJ=false;
-       for(int i=0; i<this.personajes.size(); i++){
-            if(personajes.get(i).bordeder+personajes.get(i).bordeup*mapa.getAncho()== bordeizq+bordeup*mapa.getAncho()){
+      int i;
+       for(i=0; i<this.personajes.size(); i++){
+            if(personajes.get(i).bordeder+personajes.get(i).bordeup*mapa.getAlto()== bordeizq+bordeup*mapa.getAlto()){
                 this.colision=true;
-                colisionNPJ=true;
-                this.secundario=i;
                 if(teclado.accion){
-                    System.out.println(personajes.get(i).Hablar());
+                    colisionNPJ=true;
+                    System.out.println(personajes.get(i).Hablar()+1);
                 }
+                break;
             }
-            if(personajes.get(i).bordeizq+personajes.get(i).bordeup*mapa.getAncho()== bordeder+bordeup*mapa.getAncho()){
+            if(personajes.get(i).bordeizq+personajes.get(i).bordeup*mapa.getAlto()== bordeder+bordeup*mapa.getAlto()){
                 this.colision=true;
-                colisionNPJ=true;
-                this.secundario=i;
                 if(teclado.accion){
-                    System.out.println(personajes.get(i).Hablar());
+                    colisionNPJ=true;
+                    System.out.println(personajes.get(i).Hablar()+2);
                 }
+                break;
             }
             if(personajes.get(i).bordeder+personajes.get(i).bordedown*mapa.getAncho()== bordeizq+bordedown*mapa.getAncho()){
                 this.colision=true;
-                colisionNPJ=true;
-                this.secundario=i;
                 if(teclado.accion){
-                    System.out.println(personajes.get(i).Hablar());
+                    colisionNPJ=true;
+                    System.out.println(personajes.get(i).Hablar()+3);
                 }
+                break;
             }
             if(personajes.get(i).bordeizq+personajes.get(i).bordedown*mapa.getAncho()== bordeder+bordedown*mapa.getAncho()){
                 this.colision=true;
-                colisionNPJ=true;
-                this.secundario=i;
                 if(teclado.accion){
-                    System.out.println(personajes.get(i).Hablar());
+                    colisionNPJ=true;
+                    System.out.println(personajes.get(i).Hablar()+4);
                 }
+                break;
             }
-            if(!colision){
-                this.secundario=-1;
-            }
+       }
+       
+       if(!colisionNPJ){
+            this.secundario=-1;
+       }else{
+            this.secundario=i;
        }
        return colision;
    }

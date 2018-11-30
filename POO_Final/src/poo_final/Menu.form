@@ -32,7 +32,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" pref="272" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" pref="276" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -48,16 +48,27 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="stopmusic" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="playmusic" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="stopmusic" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="Guardar" alignment="1" min="-2" pref="279" max="-2" attributes="0"/>
-                      <Component id="Salir" alignment="1" min="-2" pref="279" max="-2" attributes="0"/>
-                      <Component id="Regresar" alignment="1" min="-2" pref="279" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="Regresar" alignment="1" min="-2" pref="279" max="-2" attributes="0"/>
+                              <Component id="Guardar" alignment="1" min="-2" pref="279" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="Salir" min="-2" pref="279" max="-2" attributes="0"/>
+                              <Component id="ReadGame" alignment="0" min="-2" pref="279" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -69,15 +80,17 @@
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="Regresar" min="-2" pref="54" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="playmusic" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
-                      <Component id="stopmusic" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="Guardar" min="-2" pref="37" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="Salir" min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="ReadGame" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="stopmusic" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
+                      <Component id="playmusic" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="Salir" min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -95,7 +108,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="Guardar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Guardar"/>
+            <Property name="text" type="java.lang.String" value="Guardar Partida"/>
             <Property name="alignmentX" type="float" value="410.0"/>
             <Property name="alignmentY" type="float" value="410.0"/>
           </Properties>
@@ -131,6 +144,16 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="playmusicActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="ReadGame">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Leer Partida"/>
+            <Property name="alignmentX" type="float" value="410.0"/>
+            <Property name="alignmentY" type="float" value="410.0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ReadGameActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -23,7 +23,7 @@ public abstract class Personajes extends Ente{
    protected int margenup   = -5;
    protected int margendown =  5;
    
-   protected int direccion= 2;
+   protected int direccion= 0;
    //0 mira hacia arriba
    //1 mira hacia derecha 
    //2 mira hacia abajo
@@ -69,8 +69,8 @@ public abstract class Personajes extends Ente{
        //bordes de las colisiones
        this.bordeizq= (int)((posx+4*this.margender)/Imagen.getLado());
        this.bordeder= (posx+this.margender+this.margenizq)/Imagen.getLado();
-       this.bordeup= (posy-5+this.margendown)/Imagen.getLado();
-       this.bordedown= (int)(posy+5*this.margendown+this.margenup)/Imagen.getLado();
+       this.bordeup= (posy+this.margendown)/Imagen.getLado();
+       this.bordedown= (int)(posy*this.margendown+this.margenup)/Imagen.getLado();
        
        //System.out.println("x="+posx);
        

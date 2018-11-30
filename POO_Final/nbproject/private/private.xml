@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/Ente/Personajes/Principal.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>188</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Guillermo%20BG/POO_Final(final)/POO_Final/src/Ente/Personajes/Secundarios.java</file>
+            <file>file:/C:/Users/Guillermo%20BG/POO_Final(final)/POO_Final/src/Ente/Ente.java</file>
+            <file>file:/C:/Users/Guillermo%20BG/POO_Final(final)/POO_Final/src/poo_final/Main.java</file>
+            <file>file:/C:/Users/Guillermo%20BG/POO_Final(final)/POO_Final/src/poo_final/Menu.java</file>
+            <file>file:/C:/Users/Guillermo%20BG/POO_Final(final)/POO_Final/Recursos/Texturas/RPGCharacterSprites32x32.png</file>
+            <file>file:/C:/Users/Guillermo%20BG/POO_Final(final)/POO_Final/src/Ente/Personajes/Personajes.java</file>
+            <file>file:/C:/Users/Guillermo%20BG/POO_Final(final)/POO_Final/src/Ente/Personajes/Principal.java</file>
+        </group>
     </open-files>
 </project-private>

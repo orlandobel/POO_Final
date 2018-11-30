@@ -7,6 +7,14 @@ package poo_final;
 
 import Controles.Teclado;
 import PruebaSonido.Sonido;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -14,7 +22,9 @@ import javax.swing.JFrame;
  * @author Orlando
  */
 public class Menu extends javax.swing.JFrame {
-
+    private FileOutputStream fos;
+    private ObjectOutputStream oos;
+    private Main Juego;
     /**
      * Creates new form Menu
      */
@@ -23,6 +33,12 @@ public class Menu extends javax.swing.JFrame {
 //        this.setUndecorated(true);
         this.setLocationRelativeTo(null);
     }
+
+    public void setJuego(Main Juego) {
+        this.Juego = Juego;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,6 +55,7 @@ public class Menu extends javax.swing.JFrame {
         Salir = new javax.swing.JButton();
         stopmusic = new javax.swing.JButton();
         playmusic = new javax.swing.JButton();
+        ReadGame = new javax.swing.JButton();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setUndecorated(true);
@@ -55,7 +72,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        Guardar.setText("Guardar");
+        Guardar.setText("Guardar Partida");
         Guardar.setAlignmentX(410.0F);
         Guardar.setAlignmentY(410.0F);
         Guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -91,20 +108,36 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        ReadGame.setText("Leer Partida");
+        ReadGame.setAlignmentX(410.0F);
+        ReadGame.setAlignmentY(410.0F);
+        ReadGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReadGameActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(stopmusic)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(playmusic)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(playmusic))
-                    .addComponent(Guardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Salir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Regresar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(stopmusic))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Regresar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Guardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ReadGame, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -113,14 +146,16 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(Regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(playmusic, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stopmusic, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ReadGame, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(stopmusic, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(playmusic, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -131,7 +166,7 @@ public class Menu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
         );
 
         pack();
@@ -146,7 +181,50 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_RegresarActionPerformed
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
-        // TODO add your handling code here:
+        boolean aux=true;
+        this.Juego.ActualizarPepitoX();
+        this.Juego.ActualizarPepitoY();
+        try {
+            
+             fos = new FileOutputStream("Save.wop");
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        
+        try{
+        oos=new ObjectOutputStream(fos);
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        ObjectInputStream ois = null;
+        
+        try {
+            ois = new ObjectInputStream(new FileInputStream("Save.wop"));
+        } catch (FileNotFoundException ex) {
+            aux=false;
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        if(aux){              
+            try{
+                oos.writeObject(this.Juego.toString());
+                System.out.println("Guardado exitoso");
+            }catch(IOException e){
+                e.printStackTrace();
+            }finally{
+                try{
+                    ois.close();
+                    oos.close();
+                    
+                    //oos.close();
+                }catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
+        }
     }//GEN-LAST:event_GuardarActionPerformed
 
     private void stopmusicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopmusicActionPerformed
@@ -157,6 +235,51 @@ public class Menu extends javax.swing.JFrame {
         Sonido.BACK.loop();
     }//GEN-LAST:event_playmusicActionPerformed
 
+    private void ReadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReadGameActionPerformed
+        this.Juego.thread.stop();
+        this.Juego.getVentana().dispose();
+        this.Juego = LeerPartida();
+        this.Juego.getVentana().setVisible(true);
+        this.Juego.Iniciar();
+    }//GEN-LAST:event_ReadGameActionPerformed
+
+    private Main LeerPartida(){
+        ObjectInputStream ois = null;
+        FileInputStream fis = null;
+        Main PartidaLeida = null;
+        try {
+            fis = new FileInputStream("Save.wop");
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        try {
+            ois = new ObjectInputStream(fis);
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        
+        try {
+           PartidaLeida = (Main) ois.readObject();
+        } catch (IOException ex) {
+           ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            if (ois != null){
+                try {
+                    ois.close();
+                    fis.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
+            }
+            return PartidaLeida;
+        }
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -194,6 +317,7 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Guardar;
+    private javax.swing.JButton ReadGame;
     private javax.swing.JButton Regresar;
     private javax.swing.JButton Salir;
     private javax.swing.JPanel jPanel1;
