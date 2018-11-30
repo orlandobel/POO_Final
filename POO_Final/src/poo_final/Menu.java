@@ -241,7 +241,7 @@ public class Menu extends javax.swing.JFrame {
        this.Juego.getVentana().dispose();
        this.dispose();
        this.PartidaLeida=this.LeerPartida();
-       this.PartidaLeida.init(this.PartidaLeida.getPepitoX(), this.PartidaLeida.getPepitoY());
+       this.PartidaLeida.posicinarJugador(this.PartidaLeida.getPepitoX(), this.PartidaLeida.getPepitoY());
        this.PartidaLeida.Iniciar();
         
         

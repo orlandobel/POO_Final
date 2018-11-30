@@ -71,7 +71,7 @@ public class Main extends Canvas implements Runnable, Serializable{
         init(i, j);
     }
     
-    public void init(int i, int j) {
+    private void init(int i, int j) {
         setPreferredSize(new Dimension(ANCHO,ALTO));
         mn = new Menu();
         teclado = new Teclado();
@@ -98,6 +98,9 @@ public class Main extends Canvas implements Runnable, Serializable{
         ventana.setLocationRelativeTo(null); //esptablece la ventana en el centro por defecto
         ventana.setVisible(true);
         
+    }
+    public void posicinarJugador(int i, int j){
+        init(i,j);
     }
 
     public void ActualizarPepitoX() {
