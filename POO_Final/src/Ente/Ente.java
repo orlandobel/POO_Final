@@ -7,12 +7,13 @@ package Ente;
 
 import Graficos.Pantalla;
 import Mapa.Mapa;
+import java.io.Serializable;
 
 /**
  *
  * @author Guillermo BG
  */
-public class Ente {
+public class Ente implements Serializable{
     protected int x,y;
     protected boolean eliminado = false;
     protected Mapa mapa;

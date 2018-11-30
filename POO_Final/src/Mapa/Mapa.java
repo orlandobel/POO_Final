@@ -7,12 +7,13 @@ package Mapa;
 
 import Graficos.Pantalla;
 import Mapa.Tiles.Tiles;
+import java.io.Serializable;
 
 /**
  *
  * @author Orlando
  */
-public abstract class Mapa {
+public abstract class Mapa implements Serializable{
     protected int ancho;
     protected int alto;
     protected int[] tiles;

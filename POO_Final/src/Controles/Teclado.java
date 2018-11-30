@@ -7,12 +7,13 @@ package Controles;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.Serializable;
 
 /**
  *
  * @author Orlando
  */
-public final class Teclado implements KeyListener{
+public final class Teclado implements KeyListener, Serializable{
 
     private final static int numTeclas = 120;
     private final boolean[] teclas = new boolean[numTeclas];

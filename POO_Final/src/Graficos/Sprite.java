@@ -5,13 +5,15 @@
  */
 package Graficos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Orlando
  */
 
 /*Extraccion de sprites*/
-public final class Sprite {
+public final class Sprite implements Serializable{
     private final int lado; //tamanio del lado de los spites
     private int x; //cordenadas en el eje x de la hoja de srpites
     private int y; //coordenadas en el eje y de la hoa de sprites

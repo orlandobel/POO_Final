@@ -7,12 +7,13 @@ package Mapa.Tiles;
 
 import Graficos.Pantalla;
 import Graficos.Sprite;
+import java.io.Serializable;
 
 /**
  *
  * @author Orlando
  */
-public class Tiles {
+public class Tiles implements Serializable{
     public static final int LADO = 32;
     protected int x;
     protected int y;

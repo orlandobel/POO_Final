@@ -120,6 +120,11 @@ public class Main extends Canvas implements Runnable, Serializable{
         Sonido.BACK.loop();
     }
     /*---------------------------------------------*/
+
+    @Override
+    public String toString() {
+        return ""+this.pepitoX+", "+this.pepitoY; //To change body of generated methods, choose Tools | Templates.
+    }
     
     /*----------Detiene el juego----------*/
     private synchronized void Detener() {

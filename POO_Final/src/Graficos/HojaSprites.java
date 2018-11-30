@@ -7,6 +7,7 @@ package Graficos;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.Serializable;
 import javax.imageio.ImageIO;
 
 /**
@@ -14,7 +15,7 @@ import javax.imageio.ImageIO;
  * @author Orlando
  */
 /*Manejara los sprites usados en el juego*/
-public class HojaSprites {
+public class HojaSprites implements Serializable{
     private final int alto; //alto de la hoja de sprites
     private final int ancho; //ancho de la hoja de spites
     public final int[] pixeles; //hoja de sprites

@@ -5,7 +5,7 @@
  */
 package poo_final;
 
-import Controles.Teclado;
+
 import PruebaSonido.Sonido;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,10 +13,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFrame;
-
 /**
  *
  * @author Orlando
@@ -24,7 +20,10 @@ import javax.swing.JFrame;
 public class Menu extends javax.swing.JFrame {
     private FileOutputStream fos;
     private ObjectOutputStream oos;
+    private ObjectInputStream ois;
+    private FileInputStream fis;
     private Main Juego;
+    private Main PartidaLeida;
     /**
      * Creates new form Menu
      */
@@ -190,7 +189,7 @@ public class Menu extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }
-        
+        System.out.println(Juego.toString());
         try{
         oos=new ObjectOutputStream(fos);
         }catch(FileNotFoundException e){
@@ -210,7 +209,9 @@ public class Menu extends javax.swing.JFrame {
         }
         if(aux){              
             try{
-                oos.writeObject(this.Juego.toString());
+                System.out.println(Juego);
+                oos.writeObject(this.Juego);
+                
                 System.out.println("Guardado exitoso");
             }catch(IOException e){
                 e.printStackTrace();
@@ -237,42 +238,48 @@ public class Menu extends javax.swing.JFrame {
 
     private void ReadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReadGameActionPerformed
         this.Juego.thread.stop();
-        this.Juego.getVentana().dispose();
-        this.Juego = LeerPartida();
-        this.Juego.getVentana().setVisible(true);
-        this.Juego.Iniciar();
+        this.LeerPartida();
+        this.Juego.thread.start();
+        
     }//GEN-LAST:event_ReadGameActionPerformed
 
-    private Main LeerPartida(){
-        ObjectInputStream ois = null;
-        FileInputStream fis = null;
-        Main PartidaLeida = null;
+    private Main LeerPartida(){   
         try {
             fis = new FileInputStream("Save.wop");
+            System.out.println(Juego.toString()+" "+1);
         } catch (FileNotFoundException ex) {
+            System.out.println(Juego.toString()+" Fallo: "+1);
             ex.printStackTrace();
         }
         try {
             ois = new ObjectInputStream(fis);
+             System.out.println(Juego.toString()+" "+2);
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
+            System.out.println(Juego.toString()+" Fallo: "+2.1);
         } catch (IOException ex) {
             ex.printStackTrace();
+            System.out.println(Juego.toString()+" Fallo: "+2.2);
         }
         
         try {
-           PartidaLeida = (Main) ois.readObject();
+           System.out.println(Juego.toString());
+           Juego = (Main) ois.readObject();
+           System.out.println(Juego.toString());
         } catch (IOException ex) {
            ex.printStackTrace();
+           System.out.println(Juego.toString()+" Fallo: "+3);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+           ex.printStackTrace();
+           System.out.println(Juego.toString()+" Fallo: "+3.1);
         } finally{
             if (ois != null){
                 try {
                     ois.close();
                     fis.close();
                 } catch (IOException ex) {
-                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                    ex.printStackTrace();
+                    System.out.println(Juego.toString()+" Fallo: "+4);
                 }
             
             }

@@ -8,13 +8,14 @@ package Mapa;
 import Mapa.Tiles.Tiles;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.Serializable;
 import javax.imageio.ImageIO;
 
 /**
  *
  * @author Orlando
  */
-public class CargarMapa extends Mapa{
+public class CargarMapa extends Mapa implements Serializable{
     
     private int[] pixeles;
     
