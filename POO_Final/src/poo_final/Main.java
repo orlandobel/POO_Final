@@ -32,8 +32,8 @@ public class Main extends Canvas implements Runnable, Serializable{
     
     private static final long serialVersionUID = 1L; //identificador
     
-    private static final int ANCHO = 820; //anco de ventana
-    private static final int ALTO = 820; //alto de ventana
+    private static final int ANCHO = 420; //anco de ventana
+    private static final int ALTO = 420; //alto de ventana
     private static final String NOMBRE = "Juego"; //nombre de ventana/juego
     private static String contFPS = "";
     private static String contAPS = "";
@@ -50,9 +50,8 @@ public class Main extends Canvas implements Runnable, Serializable{
     private Principal pepito;
     private int pepitoX;
     private int pepitoY;
-    private Secundarios A;
-    private Secundarios B;
-    private ArrayList <Secundarios> C;
+    private Secundarios A, B, C, D, E, F;
+    private ArrayList <Secundarios> G;
     
     private boolean hablando;
     
@@ -79,14 +78,22 @@ public class Main extends Canvas implements Runnable, Serializable{
         
         p = new Pantalla(ANCHO,ALTO);
         mapa = new CargarMapa("/GeneradorNiveles/MapaCastillo.png");
-        A= new Secundarios(96, 128, Sprite.SEC_PRUEBA, mapa, "Hola");
-        B= new Secundarios(416, 288, Sprite.TER_PRUEBA, mapa, "adios");
-        C=new ArrayList();
-        C.add(A);
-        C.add(B);
+        A= new Secundarios(96, 128, Sprite.SEC_PRUEBA, mapa, "Nosotros protegemos este castillo");
+        B= new Secundarios(416, 288, Sprite.TER_PRUEBA, mapa, "Gustas... posiones?");
+        C= new Secundarios(160, 320, Sprite.QUA_PRUEBA, mapa, "No se como llegué aqui");
+        D= new Secundarios(320, 256, Sprite.PEN_PRUEBA, mapa, "El reino siempre ha sido un lugar seguro");
+        E= new Secundarios(352, 128, Sprite.SEC_PRUEBA, mapa, "Nosotros protegemos este castillo");
+        F= new Secundarios(45, 96, Sprite.HEX_PRUEBA, mapa, "Yo no estoy aqui, vete");
+        G=new ArrayList();
+        G.add(A);
+        G.add(B);
+        G.add(C);
+        G.add(D);
+        G.add(E);
+        G.add(F);
         pepitoX=i;
         pepitoY=j;
-        pepito = new Principal(teclado, pepitoX, pepitoY, Sprite.JUGADOR_PRUEBA_ABAJO, mapa, C);
+        pepito = new Principal(teclado, pepitoX, pepitoY, Sprite.JUGADOR_PRUEBA_ABAJO, mapa, G);
         
         ventana = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -199,6 +206,10 @@ public class Main extends Canvas implements Runnable, Serializable{
         pepito.mostrar(p);
         A.mostrar(p);
         B.mostrar(p);
+        C.mostrar(p);
+        D.mostrar(p);
+        E.mostrar(p);
+        F.mostrar(p);
         System.arraycopy(p.pixeles,0,this.pixeles,0,this.pixeles.length);//copia el rray de pixeles de la clase pantalla en el de esta clase para hacer el dibujado
         
         Graphics g = estrategia.getDrawGraphics(); //obtiene los graficos a dibujar
@@ -210,7 +221,7 @@ public class Main extends Canvas implements Runnable, Serializable{
         if(teclado.accion && pepito.getSecundario()!=-1){
             
             g.setColor(Color.white);
-            g.drawString(pepito.Platica(),200,600);
+            g.drawString(pepito.Platica(),64,320);
             this.hablando=true;
             
         }else{

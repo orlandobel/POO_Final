@@ -50,14 +50,29 @@ public class CargarMapa extends Mapa implements Serializable{
                     case 0xff66341d:
                         indexTiles[i] = Tiles.TIERRA;
                         continue;
-                    case 0xffa7b5d3:
-                        indexTiles[i] = Tiles.CIELO1;
+                    case 0xff1e4904:
+                        indexTiles[i] = Tiles.CESPED;
                         continue;
-                    case 0xffa0acc8:
-                        indexTiles[i] = Tiles.CIELO2;
+                    case 0xff507021:
+                        indexTiles[i] = Tiles.COPA_ARBOL;
                         continue;
-                    case 0xffabb5cb:
-                        indexTiles[i] = Tiles.CIELO3;
+                    case 0xff527126:
+                        indexTiles[i] = Tiles.Invertir(Tiles.COPA_ARBOL.s);
+                        indexTiles[i].setSolido(true);
+                        continue;
+                    case 0xff324c0c:
+                        indexTiles[i] = Tiles.ARBOL_MEDIO;
+                        continue;
+                    case 0xff405d16:
+                        indexTiles[i] = Tiles.Invertir(Tiles.ARBOL_MEDIO.s);
+                        indexTiles[i].setSolido(true);
+                        continue;
+                    case 0xff5e1800:
+                        indexTiles[i] = Tiles.TRONCO;
+                        continue;
+                    case 0xff521601:
+                        indexTiles[i] = Tiles.Invertir(Tiles.TRONCO.s);
+                        indexTiles[i].setSolido(true);
                         continue;
                     case 0xff6a6767:
                         indexTiles[i] = Tiles.TORRE_SUP;

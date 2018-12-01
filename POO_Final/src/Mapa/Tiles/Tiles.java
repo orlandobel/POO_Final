@@ -23,9 +23,10 @@ public class Tiles implements Serializable{
     /*Coleccion de tiles*/
     public static final Tiles VACIO = new Tiles(Sprite.VACIO,true);
     public static final Tiles TIERRA = new Tiles(Sprite.TIERRA,false);
-    public static final Tiles CIELO1 = new Tiles(Sprite.CIELO1,true);
-    public static final Tiles CIELO2 = new Tiles(Sprite.CIELO2,true);
-    public static final Tiles CIELO3 = new Tiles(Sprite.CIELO3,true);
+    public static final Tiles CESPED = new Tiles(Sprite.CESPED,false);
+    public static final Tiles COPA_ARBOL = new Tiles(Sprite.COPA_ARBOL,true);
+    public static final Tiles ARBOL_MEDIO = new Tiles(Sprite.ARBOL_MEDIO,true);
+    public static final Tiles TRONCO = new Tiles(Sprite.TRONCO,true);
     public static final Tiles TORRE_SUP = new Tiles(Sprite.TORRE_SUP,true);
     public static final Tiles TORRE_MID = new Tiles(Sprite.TORRE_MID,true);
     public static final Tiles TORRE_BASE = new Tiles(Sprite.TOORE_BASE,true);

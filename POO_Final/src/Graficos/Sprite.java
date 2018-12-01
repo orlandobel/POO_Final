@@ -23,7 +23,12 @@ public final class Sprite implements Serializable{
     //Sprite del jugadorPrueba
     
     public static Sprite SEC_PRUEBA = new Sprite(32,3,4,HojaSprites.personajePrueba);
-    public static Sprite TER_PRUEBA = new Sprite(32,9,8,HojaSprites.personajePrueba);
+    public static Sprite TER_PRUEBA = new Sprite(32,3,8,HojaSprites.personajePrueba);
+    public static Sprite QUA_PRUEBA = new Sprite(32,3,5,HojaSprites.personajePrueba);
+    public static Sprite PEN_PRUEBA = new Sprite(32,3,6,HojaSprites.personajePrueba);
+    public static Sprite HEX_PRUEBA = new Sprite(32,3,14,HojaSprites.personajePrueba);
+
+        
     
     
     public static Sprite JUGADOR_PRUEBA_ABAJO = new Sprite(32,3,3,HojaSprites.personajePrueba);
@@ -46,9 +51,10 @@ public final class Sprite implements Serializable{
     /*Arreglo de sprites*/
     public static Sprite VACIO = new Sprite(32,19,0,HojaSprites.Hoja1);
     public static Sprite TIERRA = new Sprite(32,0,0,HojaSprites.Hoja1);
-    public static Sprite CIELO1 = new Sprite(32,0,1,HojaSprites.Hoja1);
-    public static Sprite CIELO2 = new Sprite(32,1,1,HojaSprites.Hoja1);
-    public static Sprite CIELO3 = new Sprite(32,2,1,HojaSprites.Hoja1);
+    public static Sprite CESPED = new Sprite(32,1,0,HojaSprites.Hoja1);
+    public static Sprite COPA_ARBOL = new Sprite(32,0,5,HojaSprites.Hoja1);
+    public static Sprite ARBOL_MEDIO = new Sprite(32,0,6,HojaSprites.Hoja1);
+    public static Sprite TRONCO = new Sprite(32,0,7,HojaSprites.Hoja1);
     public static Sprite TORRE_SUP = new Sprite(32,0,2,HojaSprites.Hoja1);
     public static Sprite TORRE_MID = new Sprite(32,0,3,HojaSprites.Hoja1);
     public static Sprite TOORE_BASE = new Sprite(32,0,4,HojaSprites.Hoja1);
